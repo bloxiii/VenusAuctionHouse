@@ -1,0 +1,207 @@
+body {
+  background-color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #20201f;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+  margin-right: 20px;
+}
+
+.search-bar {
+  padding: 10px;
+  border-radius: 30px;
+  background-color: #4a4a49;
+  color: #fafaf9;
+  font-size: 16px;
+  margin-left: 25%;
+  width: 25%;
+  min-width: 200px;
+  border: 2px solid #bf6a02;
+  outline: none;
+}
+
+.search-bar::placeholder {
+  color: #fafaf9;
+  opacity: 1;
+}
+
+.centre {
+  background: url("image\ 5.png") no-repeat center center fixed;
+  background-size: cover;
+  height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  width: 60%;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-section {
+  flex: 2;
+}
+
+.description-section {
+  flex: 3;
+  padding: 20px;
+}
+
+.gestion {
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.description-section h2 {
+  font-size: 28px;
+  color: #20201f;
+  margin-bottom: 10px;
+}
+
+.description-section p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.description-section .details {
+  font-style: italic;
+  color: #555;
+}
+
+.offer-section {
+  border-radius: 10px;
+  margin-left: 30px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-left: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  width: 110%;
+}
+
+.offer-section h3 {
+  font-size: 32px;
+  color: #20201f;
+  margin-bottom: 20px;
+}
+
+.offer-section p {
+  font-size: 16px;
+  color: #20201f;
+}
+
+.offer-section button {
+  background-image: linear-gradient(to right, #dbc253, #75682c);
+  border: none;
+  padding: 15px;
+  border-radius: 30px;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.offer-section button:hover {
+  background-image: linear-gradient(to right, #bdaf3a, #5b4d22);
+}
+
+.Surenchérir {
+  display: flex;
+  margin-top: 65%;
+}
+
+nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style du bouton burger */
+.burger-menu button {
+  font-size: 24px;
+  color: #dbc253;
+  background-color: #4a4a49;
+  border: none;
+  cursor: pointer;
+  padding: 10px; /* Ajoute de l'espace autour du texte */
+  width: 60px; /* Largeur du bouton */
+  height: 60px; /* Hauteur du bouton */
+  border-radius: 50%; /* Rendre le bouton circulaire (optionnel) */
+}
+
+.burger-menu button:focus {
+  outline: none; /* Supprime la bordure de focus sur le bouton */
+}
+
+/* Menu caché par défaut */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  background-color: #fafaf9;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+/* Liens du menu */
+ul li {
+  border-bottom: 1px solid #555;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #20201f;
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+
+ul li a:hover {
+  background-color: #dbc253;
+}
+
+/* Petit effet de transition sur l'affichage du menu */
+ul {
+  transition: all 0.3s ease-in-out;
+}

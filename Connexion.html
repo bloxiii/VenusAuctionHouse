@@ -1,0 +1,52 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venus Auction House</title>
+    <link rel="stylesheet" href="connexion.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="Logo.png" alt="Venus Auction House Logo" class="logo">
+            <input type="search" placeholder="Barre de recherche" class="search-bar">
+        </div>
+        <nav>
+            <div class="burger-menu" id="burger-menu">
+              <!-- Icone du burger (simple bouton pour le moment) -->
+              <button id="burger-btn">☰</button>
+            </div>
+            <!-- Menu caché initialement -->
+            <ul id="menu" style="display: none">
+              <li><a href="#">Mon compte</a></li>
+              <li>
+                <a href="#">Oeuvre à vendre</a>
+                <a href="#">Mes enchères en cours</a>
+                <a href="#">Mes achats</a>
+              </li>
+              <li>
+                <a href="#">Mes annonces</a>
+                <a href="#">Mes ventes</a>
+              </li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="Connexion.html">Se déconnecter</a></li>
+            </ul>
+          </nav>
+    </header>
+    <main>
+        <div class="form-container">
+            <form action="submit_form.php" method="post">
+                <label for="email"></label>
+                <input type="email" id="email" name="email" placeholder="Entrez votre email" required>
+                
+                <label for="password"></label>
+                <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+                
+                <button type="submit" class="custom-button">Se connecter</button>
+                <a href="#" class="forgot-password">Mot de passe oublié</a>
+            </form>
+        </div>
+    </main>
+    <script src="burger-menu.js"></script>
+</body>
+</html>
