@@ -1,4 +1,6 @@
 <?php
+session_start(); 
+
 include 'connexion.php'; // Inclut le fichier de connexion à la base de données
 
 
@@ -17,9 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Vérification du mot de passe (si crypté avec password_hash)
         if ($password == $user['Mot_de_passe']){
-            echo "Connexion réussie !";
             // Rediriger vers une autre page ou démarrer une session
-        } else {
+            $_SESSION['Num_client'] = $user['Num_client'];  // Stocke le Num_client dans la session
+            $_SESSION['email'] = $user['email'];  // Stocke l'email dans la session
+            $_SESSION['logged_in'] = true;  // Flag pour indiquer que l'utilisateur est connecté
+            header("Location: Mon_compte.php");
+            exit();
+        } 
+        else {
             echo "Mot de passe incorrect.";
             echo $user['Mot_de_passe'];
             echo $password;

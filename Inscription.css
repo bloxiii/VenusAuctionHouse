@@ -59,8 +59,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height:70vh;
-
+    height:80vh;
+    width: 45%; 
 }
 
 .form-container input {
@@ -87,9 +87,9 @@ label {
     margin-bottom: 8px;
 }
 
-input[type="email"], input[type="password"] {
+input[type="email"], input[type="password"], input[type="text"] {
     padding: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     border-radius: 30px;
     border: 6px solid transparent; 
     background-image: linear-gradient(white, white), linear-gradient(to right, #DBC253, #75682C); 
@@ -99,7 +99,8 @@ input[type="email"], input[type="password"] {
     background-color: #f9f9f9; 
 }
 
-input[type="email"]:focus, input[type="password"]:focus {
+input[type="email"]:focus, input[type="password"]:focus,
+input[type="text"]:focus  {
     outline: none;
     box-shadow: 0px 0px 5px #d4af37; 
 }
@@ -127,7 +128,6 @@ input[type="email"]:focus, input[type="password"]:focus {
     text-align: center;
     margin-top: 10px;
     text-decoration: none;
-    margin-bottom: 10px;
 }
 
 .forgot-password:hover {

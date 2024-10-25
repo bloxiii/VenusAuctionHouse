@@ -1,4 +1,29 @@
+<?php
+
+include 'Connexion.php';
+session_start(); // Démarre la session
+
+// Vérifie si l'utilisateur est connecté
+$is_logged_in = isset($_SESSION['Num_client']);
+
+if (isset($_GET['Num_oeuvre'])) {
+  $num_oeuvre = $_GET['Num_oeuvre'];
+
+  // Requête pour récupérer les informations de l'œuvre
+  $sql = "SELECT * FROM oeuvre WHERE Num_oeuvre = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $num_oeuvre);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  if ($result->num_rows > 0) {
+    $oeuvre = $result->fetch_assoc(); // Récupère les données de l'œuvre
+  }
+
+}
+?>
+
 <html lang="fr">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,8 +46,9 @@
           <button id="burger-btn">☰</button>
         </div>
         <!-- Menu caché initialement -->
+        <?php if ($is_logged_in): ?>
         <ul id="menu" style="display: none">
-          <li><a href="#">Mon compte</a></li>
+          <li><a href="Mon_compte.php">Mon compte</a></li>
           <li>
             <a href="#">Oeuvre à vendre</a>
             <a href="#">Mes enchères en cours</a>
@@ -33,8 +59,20 @@
             <a href="#">Mes ventes</a>
           </li>
           <li><a href="#">FAQ</a></li>
-          <li><a href="Connexion.html">Se déconnecter</a></li>
+          <li><a href="Logout.php">Se déconnecter</a></li>
+          </ul>
+          <?php else: ?>
+        <!-- Menu pour les utilisateurs invités -->
+        <ul id="menu" style="display: none">
+          <li>
+            <a href="SeConnecter.php">Connexion</a>
+            <a href="Inscription.php">Inscription</a>
+          </li>
+        <li><a href="#">Oeuvre à vendre</a></li>
+        <li><a href="#">FAQ</a></li>
         </ul>
+    <?php endif; ?>
+        
       </nav>
     </header>
     <main class="centre">
@@ -44,20 +82,9 @@
             <img src="arbre.png" alt="L'Arbre Rouge" />
           </div>
           <div class="description-section">
-            <h2>L’arbre rouge</h2>
+            <h2><?php echo htmlspecialchars($oeuvre['titre']); ?></h2>
             <p>
-              "L'Arbre Rouge" est un tableau représentant les quatre saisons à
-              travers un majestueux arbre aux feuilles rouges. Chaque côté de
-              l'œuvre capture une saison : le printemps avec ses bourgeons verts
-              et fleurs éclatantes, l'été avec un feuillage dense sous un ciel
-              bleu, l'automne où les feuilles virent au rouge, et orange, et
-              l'hiver où l'arbre se dresse presque nu, couvert de neige et de
-              givre.
-            </p>
-            <p>
-              Les feuilles rouges persistent tout au long des saisons,
-              symbolisant la constance et la vitalité malgré les changements du
-              cycle naturel.
+            <?php echo htmlspecialchars($oeuvre['Description']); ?>
             </p>
             <p class="details">
               Date de l’œuvre : 1942 <br />

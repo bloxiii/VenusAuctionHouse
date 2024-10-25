@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-image: url(image\ 13.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+header {
+  background-color: #20201f;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 2px solid #bf6a02;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+  margin-right: 20px;
+}
+
+.search-bar {
+  padding: 10px; /* Spacing inside the search bar */
+  border-radius: 30px; /* Rounded corners */
+  background-color: #4a4a49; /* Grey background color" */
+  color: #ffffff; /* Solid white background */
+  font-size: 16px; /* Set font size */
+  margin: 30%; /* Center the search bar */
+  width: 25%; /* Width of the search bar */
+  min-width: 200px; /* Minimum width of the search bar */
+  border: 2px solid #bf6a02; /* Colored edges */
+  outline: none; /* Remove outline */
+}
+
+.search-bar::placeholder {
+  color: #ccc; /* Light gray placeholder text */
+}
+
+.user-info-box {
+  background-color: #ffffff; /* White background */
+  border: 2px solid black; /* Solid black edges */
+  border-radius: 15px; /* Rounded corners */
+  padding: 20px; /* Spacing inside the box */
+  margin: 20px auto; /* Center the box */
+  width: 80%; /* Width of the box */
+  max-width: 600px; /* Maximum width */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.user-info-box label {
+  display: block; /* Each label on a new line */
+  margin-bottom: 5px; /* Space below labels */
+}
+
+.user-info-box input {
+  width: 97%; /* Full width inputs */
+  padding: 10px; /* Padding inside inputs */
+  margin-bottom: 15px; /* Space below inputs */
+  border: 1px solid #ccc; /* Solid light gray border */
+  border-radius: 5px; /* Rounded corners for inputs */
+  outline: none; /* Remove outline */
+}
+
+.user-info-box input:focus {
+  border-color: #bf6a02; /* Highlight border on focus */
+}
+
+.user-info-box button {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; /* Set font family */
+  border-radius: 5px; /* Rounded corners for inputs */
+  background-color: #ffffff; /* Solid white background */
+  border: 1px solid #ccc; /* Light gray border */
+  outline: none; /* Remove outline */
+}
+
+
+nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style du bouton burger */
+.burger-menu button {
+  font-size: 24px;
+  color: #dbc253;
+  background-color: #4a4a49;
+  border: none;
+  cursor: pointer;
+  padding: 10px; /* Ajoute de l'espace autour du texte */
+  width: 60px; /* Largeur du bouton */
+  height: 60px; /* Hauteur du bouton */
+  border-radius: 50%; /* Rendre le bouton circulaire (optionnel) */
+}
+
+.burger-menu button:focus {
+  outline: none; /* Supprime la bordure de focus sur le bouton */
+}
+
+/* Menu caché par défaut */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  background-color: #fafaf9;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+/* Liens du menu */
+ul li {
+  border-bottom: 1px solid #555;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #20201f;
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+
+ul li a:hover {
+  background-color: #dbc253;
+}
+
+/* Petit effet de transition sur l'affichage du menu */
+ul {
+  transition: all 0.3s ease-in-out;
+}

@@ -10,7 +10,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-content: space-between;
   padding: 0 20px;
+  border-bottom: 2px solid #bf6a02;
 }
 
 .header-container {
@@ -23,6 +25,7 @@ header {
   height: 100px;
   width: auto;
   margin-right: 20px;
+  
 }
 
 .search-bar {
