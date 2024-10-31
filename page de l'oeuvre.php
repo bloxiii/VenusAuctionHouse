@@ -52,11 +52,11 @@ if (isset($_GET['Num_oeuvre'])) {
           <li>
             <a href="#">Oeuvre à vendre</a>
             <a href="#">Mes enchères en cours</a>
-            <a href="#">Mes achats</a>
+            <a href="Mes_achats.php">Mes achats</a>
           </li>
           <li>
             <a href="#">Mes annonces</a>
-            <a href="#">Mes ventes</a>
+            <a href="Mes_ventes.php">Mes ventes</a>
           </li>
           <li><a href="#">FAQ</a></li>
           <li><a href="Logout.php">Se déconnecter</a></li>
