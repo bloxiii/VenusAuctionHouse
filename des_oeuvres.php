@@ -1,26 +1,43 @@
 <?php
-
-
-
-include 'test_email.php';
 include 'Connexion.php';
 
+session_start(); // Démarre la session
 
 // Vérifie si l'utilisateur est connecté
 $is_logged_in = isset($_SESSION['Num_client']);
 
-// Supposons que vous obtenez le style depuis une requête GET ou une autre source.
-$style = isset($_GET['style']) ? $_GET['style'] : '*';
+$selectedStyle = '%';
+$selectedAuteur = '%';
+$affichageStyle = 'Style' ; 
+
+// Vérifie si le formulaire a été soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Récupère la valeur de l'option sélectionnée
+  $selectedStyle = isset($_POST['style']) ? $_POST['style'] : '%';
+  $affichageStyle = $selectedStyle ;
+
+  // Affiche ou utilise la valeur récupérée
+  if ($selectedStyle) {
+      echo "Le style sélectionné est : " . htmlspecialchars($selectedStyle);
+  } else {
+      echo "Aucun style sélectionné.";
+  }
+}
+else {
+  echo "rien" ;
+}
+
+
 
 $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
         FROM oeuvre
         JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
-        WHERE (oeuvre.Style = ? OR ? = '*')";
+        WHERE oeuvre.Style LIKE ?";
 
 // Préparer la requête
 $stmt = $conn->prepare($sql);
 
-$stmt->bind_param("ss", $style, $style);
+$stmt->bind_param('s', $selectedStyle);
 
 $stmt->execute();
 
@@ -28,15 +45,28 @@ $result = $stmt->get_result();
   if ($result->num_rows > 0) {
     $oeuvres = $result->fetch_all(MYSQLI_ASSOC);
   } else {
-      echo "<p>Pas d'œuvre pour le style : " . htmlspecialchars($style) . "</p>" ;
+      echo "<p>Pas d'œuvre pour le style : " . htmlspecialchars($selectedStyle) . "</p>" ;
       exit;
   }
 
-  $query = "SELECT Style FROM oeuvre"; // Remplace 'styles' par le nom de votre table
+  $query = "SELECT Style FROM oeuvre"; 
   $stmt = $conn->prepare($query);
   $stmt->execute();
   $result = $stmt->get_result();
-  $styles = $result->fetch_all(MYSQLI_ASSOC);
+  $all_styles = $result->fetch_all(MYSQLI_ASSOC);
+
+  $query = "SELECT DISTINCT auteur.Prenom , auteur.Nom FROM oeuvre
+            JOIN auteur WHERE oeuvre.Num_client_aut = auteur.Num_auteur"; 
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $all_auteurs = $result->fetch_all(MYSQLI_ASSOC);
+
+// Vérifie si l'utilisateur est connecté
+$is_logged_in = isset($_SESSION['Num_client']);
+
+// Supposons que vous obtenez le style depuis une requête GET ou une autre source.
+
 
 
 ?>
@@ -52,7 +82,6 @@ $result = $stmt->get_result();
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <script src="index.js"></script>
     <header class="header">
       <div class="header-container">
         <img src="logo.png" alt="Venus Auction House Logo" class="logo" />
@@ -87,7 +116,7 @@ $result = $stmt->get_result();
         <!-- Menu pour les utilisateurs invités -->
         <ul id="menu" style="display: none">
           <li>
-            <a href="Connexion.php">Connexion</a>
+            <a href="SeConnecter.php">Connexion</a>
             <a href="Inscription.php">Inscription</a>
           </li>
         <li><a href="#">Oeuvre à vendre</a></li>
@@ -96,30 +125,31 @@ $result = $stmt->get_result();
     <?php endif; ?>
       </nav>
     </header>
-    <div class="header2">
-        <select>
+    <form action="des_oeuvres.php" method="POST" id="style-form" class = header2>
+        <select id="tkt">
             <option value="">Auteur</option>
-            <option value="Salvador Dali">Salvador Dali</option>
-            <option value="Picasso">Picasso</option>
+            <?php foreach ($all_auteurs as $auteurItem): ?>
+              <option value="<?= htmlspecialchars($auteurItem['Nom']) ?>"><?= htmlspecialchars($auteurItem['Nom']) ?></option>
+            <?php endforeach; ?>
             <!-- Ajouter d'autres auteurs -->
         </select>
-        <select>
+        <select id="price">
             <option value="">Prix</option>
             <option value="asc">Croissant</option>
             <option value="desc">Décroissant</option>
         </select>
-        <select>
+        <select id="siecle">
             <option value="">Siècle</option>
             <option value="20e">20e siècle</option>
             <option value="21e">21e siècle</option>
         </select>
-        <select id="style-select" onchange="filterByStyle()">
-    <option value="">Style</option>
-    <?php foreach ($styles as $style): ?>
-        <option value="<?= htmlspecialchars($style['Style']) ?>"><?= htmlspecialchars($style['Style']) ?></option>
-    <?php endforeach; ?>
-</select>
-    </div>
+        <select id="style-select" name="style" onchange="document.getElementById('style-form').submit()">
+          <option value=""><?php echo $affichageStyle; ?></option>
+          <?php foreach ($all_styles as $styleItem): ?>
+              <option value="<?= htmlspecialchars($styleItem['Style']) ?>"><?= htmlspecialchars($styleItem['Style']) ?></option>
+          <?php endforeach; ?>
+      </select>
+          </form>
 
     <!-- Conteneur pour les cartes d'œuvres -->
     <div class="gallery">
