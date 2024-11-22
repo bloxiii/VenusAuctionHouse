@@ -6,40 +6,221 @@ session_start(); // Démarre la session
 // Vérifie si l'utilisateur est connecté
 $is_logged_in = isset($_SESSION['Num_client']);
 
-$selectedStyle = '%';
-$selectedAuteur = '%';
-$affichageStyle = 'Style' ; 
 
 // Vérifie si le formulaire a été soumis
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   // Récupère la valeur de l'option sélectionnée
-  $selectedStyle = isset($_POST['style']) ? $_POST['style'] : '%';
-  $affichageStyle = $selectedStyle ;
-
-  // Affiche ou utilise la valeur récupérée
-  if ($selectedStyle) {
-      echo "Le style sélectionné est : " . htmlspecialchars($selectedStyle);
-  } else {
-      echo "Aucun style sélectionné.";
-  }
+  $selectedStyle = isset($_GET['style']) ? $_GET['style'] : null;
+  $selectedPrice = isset($_GET['price']) ? $_GET['price'] : null;
+  $selectedAuteur = isset($_GET['auteur']) ? $_GET['auteur'] : null;
+  $selectedStiecle = isset($_GET['siecle']) ? $_GET['siecle'] : null;
 }
 else {
-  echo "rien" ;
-}
+    echo "rien" ;
+  }
+//   // Affiche ou utilise la valeur récupérée
+
+
+//  if ($selectedStyle) {
+//       echo "Le style sélectionné est : " . htmlspecialchars($selectedStyle);
+//   } else {
+//       echo "Aucun style sélectionné.";
+//   }
+// }
 
 
 
-$sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
-        FROM oeuvre
-        JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
-        WHERE oeuvre.Style LIKE ?";
 
-// Préparer la requête
-$stmt = $conn->prepare($sql);
 
-$stmt->bind_param('s', $selectedStyle);
+// if ($selectedAuteur) {
+//   echo "Le AUTEUR sélectionné est : " . htmlspecialchars($selectedAuteur);
+// } else {
+//   echo "Aucun AUTR sélectionné.";
+// }
 
-$stmt->execute();
+
+
+
+
+
+
+
+  // if ($selectedAuteur) {
+  //   echo "Le AUTEUR sélectionné est : " . htmlspecialchars($selectedAuteur);
+  // } else {
+  //   echo "Aucun AUTR sélectionné.";
+  // }
+
+
+
+  if ($selectedAuteur && $selectedStyle && !$selectedStiecle && !$selectedPrice) {
+    $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+            FROM oeuvre
+            JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+            WHERE oeuvre.Style = ? AND auteur.Nom = ? ";
+  
+    // Préparer la requête
+    $stmt = $conn->prepare($sql);
+  
+    $stmt->bind_param('ss' , $selectedStyle, $selectedAuteur);
+  
+    $stmt->execute();
+    }
+
+  
+if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) {
+  $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+          FROM oeuvre
+          JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+          WHERE auteur.Nom = ? ";
+
+  // Préparer la requête
+  $stmt = $conn->prepare($sql);
+
+  $stmt->bind_param('s' , $selectedAuteur);
+
+  $stmt->execute();
+  }
+
+
+
+
+  if (!$selectedAuteur && $selectedStyle && !$selectedStiecle && !$selectedPrice) {
+    $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+            FROM oeuvre
+            JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+            WHERE oeuvre.Style = ? ";
+  
+    // Préparer la requête
+    $stmt = $conn->prepare($sql);
+  
+    $stmt->bind_param('s' , $selectedStyle);
+  
+    $stmt->execute();
+    }
+
+
+
+
+    if (!$selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) {
+      $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+              FROM oeuvre
+              JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur";
+    
+      // Préparer la requête
+      $stmt = $conn->prepare($sql);
+    
+      $stmt->execute();
+      }
+
+
+
+      if ($selectedAuteur && $selectedStyle && $selectedStiecle && !$selectedPrice) {
+        if ( $selectedStiecle == '21e' ) {
+          $selectedStiecle1 = 2001;
+          $selectedStiecle2 = 2100;
+        }
+        if ( $selectedStiecle == '20e' ) {
+          $selectedStiecle1 = 1901;
+          $selectedStiecle2 = 2000;
+        }
+        if ( $selectedStiecle == '19e' ) {
+          $selectedStiecle1 = 1801;
+          $selectedStiecle2 = 1900;
+        }
+        $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+                FROM oeuvre
+                JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+                WHERE oeuvre.Style = ? AND auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
+      
+        // Préparer la requête
+        $stmt = $conn->prepare($sql);
+      
+        $stmt->bind_param('ssii' , $selectedStyle, $selectedAuteur, $selectedStiecle1, $selectedStiecle2);
+      
+        $stmt->execute();
+        }
+
+    
+    if ($selectedAuteur && !$selectedStyle && $selectedStiecle && !$selectedPrice) {
+      if ( $selectedStiecle == '21e' ) {
+        $selectedStiecle1 = 2001;
+        $selectedStiecle2 = 2100;
+      }
+      if ( $selectedStiecle == '20e' ) {
+        $selectedStiecle1 = 1901;
+        $selectedStiecle2 = 2000;
+      }
+      if ( $selectedStiecle == '19e' ) {
+        $selectedStiecle1 = 1801;
+        $selectedStiecle2 = 1900;
+      }
+      $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+              FROM oeuvre
+              JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+              WHERE auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
+    
+      // Préparer la requête
+      $stmt = $conn->prepare($sql);
+    
+      $stmt->bind_param('sii' , $selectedAuteur, $selectedStiecle1, $selectedStiecle2);
+    
+      $stmt->execute();
+      }
+ 
+    
+    if (!$selectedAuteur && !$selectedStyle && $selectedStiecle && !$selectedPrice) {
+      if ( $selectedStiecle == '21e' ) {
+        $selectedStiecle1 = 2001;
+        $selectedStiecle2 = 2100;
+      }
+      if ( $selectedStiecle == '20e' ) {
+        $selectedStiecle1 = 1901;
+        $selectedStiecle2 = 2000;
+      }
+      if ( $selectedStiecle == '19e' ) {
+        $selectedStiecle1 = 1801;
+        $selectedStiecle2 = 1900;
+      }
+      $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+              FROM oeuvre
+              JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+              WHERE oeuvre.Date_oeuvre BETWEEN ? AND ? ";
+    
+      // Préparer la requête
+      $stmt = $conn->prepare($sql);
+    
+      $stmt->bind_param('ii' ,$selectedStiecle1, $selectedStiecle2);
+    
+      $stmt->execute();
+      }
+
+
+      if (!$selectedAuteur && $selectedStyle && $selectedStiecle && !$selectedPrice) {
+        if ( $selectedStiecle == '21e' ) {
+          $selectedStiecle1 = 2001;
+          $selectedStiecle2 = 2100;
+        }
+        if ( $selectedStiecle == '20e' ) {
+          $selectedStiecle1 = 1901;
+          $selectedStiecle2 = 2000;
+        }
+        if ( $selectedStiecle == '19e' ) {
+          $selectedStiecle1 = 1801;
+          $selectedStiecle2 = 1900;
+        }
+        $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+                FROM oeuvre
+                JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+                WHERE oeuvre.Style = ? AND auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
+      
+        // Préparer la requête
+        $stmt = $conn->prepare($sql);
+      
+        $stmt->bind_param('sii' , $selectedStyle, $selectedStiecle1, $selectedStiecle2);
+      
+        $stmt->execute();
+        }
 
 $result = $stmt->get_result();
   if ($result->num_rows > 0) {
@@ -49,7 +230,7 @@ $result = $stmt->get_result();
       exit;
   }
 
-  $query = "SELECT Style FROM oeuvre"; 
+  $query = "SELECT DISTINCT Style FROM oeuvre"; 
   $stmt = $conn->prepare($query);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -101,7 +282,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
         <ul id="menu" style="display: none">
           <li><a href="Mon_compte.php">Mon compte</a></li>
           <li>
-            <a href="#">Oeuvre à vendre</a>
+            <a href="des_oeuvres.php">Oeuvre à vendre</a>
             <a href="#">Mes enchères en cours</a>
             <a href="Mes_achats.php">Mes achats</a>
           </li>
@@ -119,32 +300,37 @@ $is_logged_in = isset($_SESSION['Num_client']);
             <a href="SeConnecter.php">Connexion</a>
             <a href="Inscription.php">Inscription</a>
           </li>
-        <li><a href="#">Oeuvre à vendre</a></li>
+        <li><a href="des_oeuvres.php">Oeuvre à vendre</a></li>
         <li><a href="#">FAQ</a></li>
         </ul>
     <?php endif; ?>
       </nav>
     </header>
-    <form action="des_oeuvres.php" method="POST" id="style-form" class = header2>
-        <select id="tkt">
+    <form action="des_oeuvres.php" method="GET" id="style-form" class = header2>
+        <select id="tkt" name="auteur">
             <option value="">Auteur</option>
             <?php foreach ($all_auteurs as $auteurItem): ?>
               <option value="<?= htmlspecialchars($auteurItem['Nom']) ?>"><?= htmlspecialchars($auteurItem['Nom']) ?></option>
             <?php endforeach; ?>
             <!-- Ajouter d'autres auteurs -->
         </select>
-        <select id="price">
+        <select id="price" name="price">
             <option value="">Prix</option>
-            <option value="asc">Croissant</option>
-            <option value="desc">Décroissant</option>
+            <option value="10">10 - 1 000€</option>
+            <option value="1001">1 001 - 10 001€</option>
+            <option value="10001">10 001 - 100 001€</option>
+            <option value="100001">100 001 - 1 000 001€</option>
         </select>
-        <select id="siecle">
+        <select id="siecle" name="siecle">
             <option value="">Siècle</option>
-            <option value="20e">20e siècle</option>
             <option value="21e">21e siècle</option>
+            <option value="20e">20e siècle</option>
+            <option value="19e">19e siècle</option>
+            <option value="18e">18e siècle</option>
+
         </select>
         <select id="style-select" name="style" onchange="document.getElementById('style-form').submit()">
-          <option value=""><?php echo $affichageStyle; ?></option>
+          <option value=""><?php echo $selectedStyle; ?></option>
           <?php foreach ($all_styles as $styleItem): ?>
               <option value="<?= htmlspecialchars($styleItem['Style']) ?>"><?= htmlspecialchars($styleItem['Style']) ?></option>
           <?php endforeach; ?>

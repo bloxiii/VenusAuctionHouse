@@ -81,7 +81,7 @@ $conn->close();
         <ul id="menu" style="display: none">
           <li><a href="Mon_compte.php">Mon compte</a></li>
           <li>
-            <a href="#">Oeuvre à vendre</a>
+            <a href="des_oeuvres.php">Oeuvre à vendre</a>
             <a href="#">Mes enchères en cours</a>
             <a href="#">Mes achats</a>
           </li>
@@ -99,7 +99,7 @@ $conn->close();
             <a href="SeConnecter.php">Connexion</a>
             <a href="#">Inscription</a>
           </li>
-        <li><a href="#">Oeuvre à vendre</a></li>
+        <li><a href="des_oeuvres.php">Oeuvre à vendre</a></li>
         <li><a href="#">FAQ</a></li>
         </ul>
     <?php endif; ?>
