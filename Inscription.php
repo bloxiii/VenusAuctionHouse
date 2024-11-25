@@ -86,7 +86,7 @@ $conn->close();
             <a href="#">Mes achats</a>
           </li>
           <li>
-            <a href="#">Mes annonces</a>
+            <a href="Mes_annonces.php">Mes annonces</a>
             <a href="#">Mes ventes</a>
           </li>
           <li><a href="#">FAQ</a></li>

@@ -28,7 +28,7 @@ if (isset($_GET['Num_oeuvre'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Venus Auction House</title>
-    <link rel="stylesheet" href="page de l'oeuvre.css" />
+    <link rel="stylesheet" href="page_de_oeuvre.css" />
   </head>
   <body>
     <header>
@@ -55,7 +55,7 @@ if (isset($_GET['Num_oeuvre'])) {
             <a href="Mes_achats.php">Mes achats</a>
           </li>
           <li>
-            <a href="#">Mes annonces</a>
+            <a href="Mes_annonces.php">Mes annonces</a>
             <a href="Mes_ventes.php">Mes ventes</a>
           </li>
           <li><a href="#">FAQ</a></li>

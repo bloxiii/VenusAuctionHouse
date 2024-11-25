@@ -54,7 +54,7 @@ else {
 
 
   if ($selectedAuteur && $selectedStyle && !$selectedStiecle && !$selectedPrice) {
-    $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+    $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
             FROM oeuvre
             JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
             WHERE oeuvre.Style = ? AND auteur.Nom = ? ";
@@ -69,7 +69,7 @@ else {
 
   
 if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) {
-  $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+  $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
           FROM oeuvre
           JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
           WHERE auteur.Nom = ? ";
@@ -86,7 +86,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
 
 
   if (!$selectedAuteur && $selectedStyle && !$selectedStiecle && !$selectedPrice) {
-    $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+    $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
             FROM oeuvre
             JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
             WHERE oeuvre.Style = ? ";
@@ -103,7 +103,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
 
 
     if (!$selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) {
-      $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
               FROM oeuvre
               JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur";
     
@@ -128,7 +128,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
           $selectedStiecle1 = 1801;
           $selectedStiecle2 = 1900;
         }
-        $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+        $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
                 FROM oeuvre
                 JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
                 WHERE oeuvre.Style = ? AND auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -155,7 +155,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
         $selectedStiecle1 = 1801;
         $selectedStiecle2 = 1900;
       }
-      $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
               FROM oeuvre
               JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
               WHERE auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -182,7 +182,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
         $selectedStiecle1 = 1801;
         $selectedStiecle2 = 1900;
       }
-      $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
               FROM oeuvre
               JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
               WHERE oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -209,10 +209,10 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
           $selectedStiecle1 = 1801;
           $selectedStiecle2 = 1900;
         }
-        $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom
+        $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
                 FROM oeuvre
                 JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
-                WHERE oeuvre.Style = ? AND auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
+                WHERE oeuvre.Style = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
       
         // Préparer la requête
         $stmt = $conn->prepare($sql);
@@ -221,6 +221,302 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
       
         $stmt->execute();
         }
+
+
+
+  if (!$selectedAuteur && !$selectedStyle && !$selectedStiecle && $selectedPrice) {
+    if ( $selectedPrice == '10' ) {
+      $selectedPrice1 = 10;
+      $selectedPrice2 = 1001;
+    }
+    if ( $selectedPrice == '1001' ) {
+      $selectedPrice1 = 1001;
+      $selectedPrice2 = 10000;
+    }
+    if ( $selectedPrice == '10001' ) {
+      $selectedPrice1 = 10001;
+      $selectedPrice2 = 100000;
+    }
+    if ( $selectedPrice == '100001' ) {
+      $selectedPrice1 = 100001;
+      $selectedPrice2 = 1000000;
+    }
+    $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+            FROM oeuvre
+            JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+            WHERE oeuvre.Prix_Loffre BETWEEN ? AND ?  ";
+  
+    // Préparer la requête
+    $stmt = $conn->prepare($sql);
+  
+    $stmt->bind_param('ii' , $selectedPrice1, $selectedPrice2);
+  
+    $stmt->execute();
+    }
+
+
+    if ($selectedAuteur && $selectedStyle && $selectedStiecle && $selectedPrice) {
+      if ( $selectedPrice == '10' ) {
+        $selectedPrice1 = 10;
+        $selectedPrice2 = 1001;
+      }
+      if ( $selectedPrice == '1001' ) {
+        $selectedPrice1 = 1001;
+        $selectedPrice2 = 10000;
+      }
+      if ( $selectedPrice == '10001' ) {
+        $selectedPrice1 = 10001;
+        $selectedPrice2 = 100000;
+      }
+      if ( $selectedPrice == '100001' ) {
+        $selectedPrice1 = 100001;
+        $selectedPrice2 = 1000000;
+      }
+      if ( $selectedStiecle == '21e' ) {
+        $selectedStiecle1 = 2001;
+        $selectedStiecle2 = 2100;
+      }
+      if ( $selectedStiecle == '20e' ) {
+        $selectedStiecle1 = 1901;
+        $selectedStiecle2 = 2000;
+      }
+      if ( $selectedStiecle == '19e' ) {
+        $selectedStiecle1 = 1801;
+        $selectedStiecle2 = 1900;
+      }
+      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+              FROM oeuvre
+              JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+              WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND oeuvre.Style = ? AND auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
+    
+      // Préparer la requête
+      $stmt = $conn->prepare($sql);
+    
+      $stmt->bind_param('iissii' ,$selectedPrice1, $selectedPrice2, $selectedStyle,$selectedAuteur, $selectedStiecle1, $selectedStiecle2);
+    
+      $stmt->execute();
+      }
+
+
+if (!$selectedAuteur && !$selectedStyle && $selectedStiecle && $selectedPrice) {
+  if ( $selectedPrice == '10' ) {
+    $selectedPrice1 = 10;
+    $selectedPrice2 = 1001;
+  }
+  if ( $selectedPrice == '1001' ) {
+    $selectedPrice1 = 1001;
+    $selectedPrice2 = 10000;
+  }
+  if ( $selectedPrice == '10001' ) {
+    $selectedPrice1 = 10001;
+    $selectedPrice2 = 100000;
+  }
+  if ( $selectedPrice == '100001' ) {
+    $selectedPrice1 = 100001;
+    $selectedPrice2 = 1000000;
+  }
+  if ( $selectedStiecle == '21e' ) {
+    $selectedStiecle1 = 2001;
+    $selectedStiecle2 = 2100;
+  }
+  if ( $selectedStiecle == '20e' ) {
+    $selectedStiecle1 = 1901;
+    $selectedStiecle2 = 2000;
+  }
+  if ( $selectedStiecle == '19e' ) {
+    $selectedStiecle1 = 1801;
+    $selectedStiecle2 = 1900;
+  }
+  $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+          FROM oeuvre
+          JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+          WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
+
+  // Préparer la requête
+  $stmt = $conn->prepare($sql);
+
+  $stmt->bind_param('iiii' ,$selectedPrice1, $selectedPrice2, $selectedStiecle1, $selectedStiecle2);
+
+  $stmt->execute();
+  }
+
+  if (!$selectedAuteur && $selectedStyle && !$selectedStiecle && $selectedPrice) {
+    if ( $selectedPrice == '10' ) {
+      $selectedPrice1 = 10;
+      $selectedPrice2 = 1001;
+    }
+    if ( $selectedPrice == '1001' ) {
+      $selectedPrice1 = 1001;
+      $selectedPrice2 = 10000;
+    }
+    if ( $selectedPrice == '10001' ) {
+      $selectedPrice1 = 10001;
+      $selectedPrice2 = 100000;
+    }
+    if ( $selectedPrice == '100001' ) {
+      $selectedPrice1 = 100001;
+      $selectedPrice2 = 1000000;
+    }
+    $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+            FROM oeuvre
+            JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+            WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND oeuvre.Style = ? ";
+  
+    // Préparer la requête
+    $stmt = $conn->prepare($sql);
+  
+    $stmt->bind_param('iis' ,$selectedPrice1, $selectedPrice2, $selectedStyle);
+  
+    $stmt->execute();
+    }
+
+    if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && $selectedPrice) {
+      if ( $selectedPrice == '10' ) {
+        $selectedPrice1 = 10;
+        $selectedPrice2 = 1001;
+      }
+      if ( $selectedPrice == '1001' ) {
+        $selectedPrice1 = 1001;
+        $selectedPrice2 = 10000;
+      }
+      if ( $selectedPrice == '10001' ) {
+        $selectedPrice1 = 10001;
+        $selectedPrice2 = 100000;
+      }
+      if ( $selectedPrice == '100001' ) {
+        $selectedPrice1 = 100001;
+        $selectedPrice2 = 1000000;
+      }
+      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+              FROM oeuvre
+              JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+              WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND auteur.Nom = ? ";
+    
+      // Préparer la requête
+      $stmt = $conn->prepare($sql);
+    
+      $stmt->bind_param('iis' ,$selectedPrice1, $selectedPrice2, $selectedStyle,$selectedAuteur, $selectedStiecle1, $selectedStiecle2);
+    
+      $stmt->execute();
+      }
+
+
+if (!$selectedAuteur && $selectedStyle && $selectedStiecle && $selectedPrice) {
+  if ( $selectedPrice == '10' ) {
+    $selectedPrice1 = 10;
+    $selectedPrice2 = 1001;
+  }
+  if ( $selectedPrice == '1001' ) {
+    $selectedPrice1 = 1001;
+    $selectedPrice2 = 10000;
+  }
+  if ( $selectedPrice == '10001' ) {
+    $selectedPrice1 = 10001;
+    $selectedPrice2 = 100000;
+  }
+  if ( $selectedPrice == '100001' ) {
+    $selectedPrice1 = 100001;
+    $selectedPrice2 = 1000000;
+  }
+  if ( $selectedStiecle == '21e' ) {
+    $selectedStiecle1 = 2001;
+    $selectedStiecle2 = 2100;
+  }
+  if ( $selectedStiecle == '20e' ) {
+    $selectedStiecle1 = 1901;
+    $selectedStiecle2 = 2000;
+  }
+  if ( $selectedStiecle == '19e' ) {
+    $selectedStiecle1 = 1801;
+    $selectedStiecle2 = 1900;
+  }
+  $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+          FROM oeuvre
+          JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+          WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND oeuvre.Style = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
+
+  // Préparer la requête
+  $stmt = $conn->prepare($sql);
+
+  $stmt->bind_param('iisii' ,$selectedPrice1, $selectedPrice2, $selectedStyle, $selectedStiecle1, $selectedStiecle2);
+
+  $stmt->execute();
+  }
+
+
+  if ($selectedAuteur && !$selectedStyle && $selectedStiecle && $selectedPrice) {
+    if ( $selectedPrice == '10' ) {
+      $selectedPrice1 = 10;
+      $selectedPrice2 = 1001;
+    }
+    if ( $selectedPrice == '1001' ) {
+      $selectedPrice1 = 1001;
+      $selectedPrice2 = 10000;
+    }
+    if ( $selectedPrice == '10001' ) {
+      $selectedPrice1 = 10001;
+      $selectedPrice2 = 100000;
+    }
+    if ( $selectedPrice == '100001' ) {
+      $selectedPrice1 = 100001;
+      $selectedPrice2 = 1000000;
+    }
+    if ( $selectedStiecle == '21e' ) {
+      $selectedStiecle1 = 2001;
+      $selectedStiecle2 = 2100;
+    }
+    if ( $selectedStiecle == '20e' ) {
+      $selectedStiecle1 = 1901;
+      $selectedStiecle2 = 2000;
+    }
+    if ( $selectedStiecle == '19e' ) {
+      $selectedStiecle1 = 1801;
+      $selectedStiecle2 = 1900;
+    }
+    $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+            FROM oeuvre
+            JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+            WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
+  
+    // Préparer la requête
+    $stmt = $conn->prepare($sql);
+  
+    $stmt->bind_param('iisii' ,$selectedPrice1, $selectedPrice2, $selectedAuteur, $selectedStiecle1, $selectedStiecle2);
+  
+    $stmt->execute();
+    }
+
+    if ($selectedAuteur && $selectedStyle && !$selectedStiecle && $selectedPrice) {
+      if ( $selectedPrice == '10' ) {
+        $selectedPrice1 = 10;
+        $selectedPrice2 = 1001;
+      }
+      if ( $selectedPrice == '1001' ) {
+        $selectedPrice1 = 1001;
+        $selectedPrice2 = 10000;
+      }
+      if ( $selectedPrice == '10001' ) {
+        $selectedPrice1 = 10001;
+        $selectedPrice2 = 100000;
+      }
+      if ( $selectedPrice == '100001' ) {
+        $selectedPrice1 = 100001;
+        $selectedPrice2 = 1000000;
+      }
+      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+              FROM oeuvre
+              JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+              WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND oeuvre.Style = ? AND auteur.Nom = ? ";
+    
+      // Préparer la requête
+      $stmt = $conn->prepare($sql);
+    
+      $stmt->bind_param('iiss' ,$selectedPrice1, $selectedPrice2, $selectedStyle, $selectedAuteur);
+    
+      $stmt->execute();
+      }
+
+
 
 $result = $stmt->get_result();
   if ($result->num_rows > 0) {
@@ -263,6 +559,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
+    <div class = "FIXE">
     <header class="header">
       <div class="header-container">
         <img src="logo.png" alt="Venus Auction House Logo" class="logo" />
@@ -287,7 +584,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
             <a href="Mes_achats.php">Mes achats</a>
           </li>
           <li>
-            <a href="#">Mes annonces</a>
+            <a href="Mes_annonces.php">Mes annonces</a>
             <a href="Mes_ventes.php">Mes ventes</a>
           </li>
           <li><a href="#">FAQ</a></li>
@@ -317,9 +614,9 @@ $is_logged_in = isset($_SESSION['Num_client']);
         <select id="price" name="price">
             <option value="">Prix</option>
             <option value="10">10 - 1 000€</option>
-            <option value="1001">1 001 - 10 001€</option>
-            <option value="10001">10 001 - 100 001€</option>
-            <option value="100001">100 001 - 1 000 001€</option>
+            <option value="1001">1 001 - 10 000€</option>
+            <option value="10001">10 001 - 100 000€</option>
+            <option value="100001">100 001 - 1 000 000€</option>
         </select>
         <select id="siecle" name="siecle">
             <option value="">Siècle</option>
@@ -336,18 +633,26 @@ $is_logged_in = isset($_SESSION['Num_client']);
           <?php endforeach; ?>
       </select>
           </form>
+          </div>
 
     <!-- Conteneur pour les cartes d'œuvres -->
     <div class="gallery">
         <?php foreach ($oeuvres as $oeuvre): ?>
-            <div class="card">
-                <div class="card-content">
-                    <h3><?= htmlspecialchars($oeuvre['titre']) ?></h3>
-                    <p>Date de l'œuvre : <?= htmlspecialchars($oeuvre['Date_oeuvre']) ?></p>
-                    <p>Auteur : <?= htmlspecialchars($oeuvre['Prenom']) ?></p>
-                    <p>Dernière offre : <?= htmlspecialchars($oeuvre['Prix_Loffre']) ?></p>
-                    <p>Montant de l'offre : <?= number_format(htmlspecialchars($oeuvre['Prix_Loffre']), 0, ',', ' ') ?> €</p>
-                </div>
+          <div class="card">
+            <a href="page_de_oeuvre.php?Num_oeuvre=<?= urlencode($oeuvre['Num_oeuvre']) ?>" class="card-link">
+            
+                <div class="card-content" style="display: flex; align-items: flex-start;">
+    <img src="<?= htmlspecialchars($oeuvre['Imagee']) ?>" alt="<?= htmlspecialchars($oeuvre['titre']) ?>" style="max-width: 200px; height: auto; margin-right: 20px;">
+    <div>
+        <h3><?= htmlspecialchars($oeuvre['titre']) ?></h3>
+        <p>Date de l'œuvre : <?= htmlspecialchars($oeuvre['Date_oeuvre']) ?></p>
+        <p>Auteur : <?= htmlspecialchars($oeuvre['Prenom']) ?></p>
+        <p>Dernière offre : <?= htmlspecialchars($oeuvre['Prix_Loffre']) ?></p>
+        <p>Montant de l'offre : <?= number_format(htmlspecialchars($oeuvre['Prix_Loffre']), 0, ',', ' ') ?> €</p>
+    </div>
+</div>
+
+
             </div>
         <?php endforeach; ?>
     </div>

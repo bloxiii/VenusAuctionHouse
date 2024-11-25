@@ -87,7 +87,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
             <a href="Mes_achats.php">Mes achats</a>
           </li>
           <li>
-            <a href="#">Mes annonces</a>
+            <a href="Mes_annonces.php">Mes annonces</a>
             <a href="Mes_ventes.php">Mes ventes</a>
           </li>
           <li><a href="#">FAQ</a></li>
