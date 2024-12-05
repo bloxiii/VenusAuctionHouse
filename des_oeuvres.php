@@ -5,19 +5,20 @@ session_start(); // Démarre la session
 
 // Vérifie si l'utilisateur est connecté
 $is_logged_in = isset($_SESSION['Num_client']);
+$selectedStyle = null;
+$selectedPrice = null;
+$selectedAuteur = null;
+$selectedStiecle = null;
 
 
 // Vérifie si le formulaire a été soumis
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && empty($_GET['search']) ) {
   // Récupère la valeur de l'option sélectionnée
   $selectedStyle = isset($_GET['style']) ? $_GET['style'] : null;
   $selectedPrice = isset($_GET['price']) ? $_GET['price'] : null;
   $selectedAuteur = isset($_GET['auteur']) ? $_GET['auteur'] : null;
   $selectedStiecle = isset($_GET['siecle']) ? $_GET['siecle'] : null;
 }
-else {
-    echo "rien" ;
-  }
 //   // Affiche ou utilise la valeur récupérée
 
 
@@ -518,6 +519,30 @@ if (!$selectedAuteur && $selectedStyle && $selectedStiecle && $selectedPrice) {
 
 
 
+      if (isset($_GET['search']) && !empty($_GET['search'])) {
+        include 'Connexion.php';
+        $searchQuery = trim($_GET['search']);
+        $searchmodif = ($searchQuery . '%');
+        // Définir la requête SQL avec des paramètres
+        $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+                FROM oeuvre
+                JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
+                WHERE oeuvre.titre LIKE ?";
+    
+        // Préparer la requête
+
+
+        $stmt = $conn->prepare($sql);
+        
+        // Ajouter le paramètre pour la recherche avec un wildcard '%' pour la recherche partielle
+
+        $stmt->bind_param('s' ,$searchmodif);
+
+        $stmt->execute();
+    }
+
+
+
 $result = $stmt->get_result();
   if ($result->num_rows > 0) {
     $oeuvres = $result->fetch_all(MYSQLI_ASSOC);
@@ -563,11 +588,16 @@ $is_logged_in = isset($_SESSION['Num_client']);
     <header class="header">
       <div class="header-container">
         <img src="logo.png" alt="Venus Auction House Logo" class="logo" />
+        <form method="GET" action="">
         <input
-          type="search"
-          placeholder="Barre de recherche"
-          class="search-bar"
-        />
+      type="search"
+      name="search"
+      placeholder="Barre de recherche"
+      class="search-bar"
+      value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>"
+    />
+    </form>
+
       </div>
       <nav>
         <div class="burger-menu" id="burger-menu">
@@ -626,12 +656,15 @@ $is_logged_in = isset($_SESSION['Num_client']);
             <option value="18e">18e siècle</option>
 
         </select>
-        <select id="style-select" name="style" onchange="document.getElementById('style-form').submit()">
-          <option value=""><?php echo $selectedStyle; ?></option>
+        <select id="style-select" name="style">
+          <option value="">Style</option>
           <?php foreach ($all_styles as $styleItem): ?>
               <option value="<?= htmlspecialchars($styleItem['Style']) ?>"><?= htmlspecialchars($styleItem['Style']) ?></option>
           <?php endforeach; ?>
       </select>
+
+      <!-- Bouton de soumission -->
+    <button type="submit">Appliquer les filtres</button>
           </form>
           </div>
 
@@ -642,8 +675,8 @@ $is_logged_in = isset($_SESSION['Num_client']);
             <a href="page_de_oeuvre.php?Num_oeuvre=<?= urlencode($oeuvre['Num_oeuvre']) ?>" class="card-link">
             
                 <div class="card-content" style="display: flex; align-items: flex-start;">
-    <img src="<?= htmlspecialchars($oeuvre['Imagee']) ?>" alt="<?= htmlspecialchars($oeuvre['titre']) ?>" style="max-width: 200px; height: auto; margin-right: 20px;">
-    <div>
+    <img src="<?= htmlspecialchars($oeuvre['Imagee']) ?>" alt="<?= htmlspecialchars($oeuvre['titre']) ?>" style="max-width: 180px; height: auto; margin-right: 10px;">
+    <div class ="txt">
         <h3><?= htmlspecialchars($oeuvre['titre']) ?></h3>
         <p>Date de l'œuvre : <?= htmlspecialchars($oeuvre['Date_oeuvre']) ?></p>
         <p>Auteur : <?= htmlspecialchars($oeuvre['Prenom']) ?></p>

@@ -66,6 +66,7 @@ header {
 }
 
 .image-section {
+  width: 100000;
   flex: 2;
 }
 
@@ -109,6 +110,7 @@ header {
   display: flex;
   flex-direction: column;
   width: 110%;
+  width: 40000;
 }
 
 .offer-section h3 {
