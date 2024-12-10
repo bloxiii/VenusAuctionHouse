@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: url('photo.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+}
+
+.faq-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+}
+
+.faq-section {
+  cursor: pointer;
+  padding: 10px;
+  background: #f1f1f1;
+  margin: 10px 0;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.faq-section:hover {
+  background: #ddd;
+}
+
+.faq-content {
+  display: none;
+  padding: 10px;
+  margin: 10px 0;
+  border-left: 4px solid #007BFF;
+}
+
