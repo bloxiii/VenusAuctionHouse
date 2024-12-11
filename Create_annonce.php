@@ -20,40 +20,50 @@
             <input type="number" id="date" name="date" required>
         </div>
 
+        <div style="display: flex; gap: 10px;">
         <div>
-            <label for="auteur">Auteur :</label>
-            <input type="text" id="auteur" name="auteur" required>
+            <label for="prenom">Prénom de l'auteur :</label>
+            <input type="text" id="prenom" name="prenom" required>
         </div>
+        <div>
+            <label for="nom">Nom de l'auteur :</label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
+    </div>
 
         <div>
             <label for="style">Style :</label>
             <input type="text" id="style" name="style" required>
         </div>
 
+
+        <div style="display: flex; gap: 10px;">
         <div>
             <label for="prix">Prix (€) :</label>
             <input type="number" id="prix" name="prix" step="0.01" required>
         </div>
-
         <div>
             <label for="increment">Incrément (€) :</label>
             <input type="number" id="increment" name="increment" step="0.01" required>
         </div>
+    </div>
 
         <div>
             <label for="photo">Photo de l'œuvre :</label>
             <input type="file" id="photo" name="photo" accept="image/*" required>
         </div>
 
+
+        <div style="display: flex; gap: 10px;">
         <div>
             <label for="dimension_x">Dimension X (cm) :</label>
             <input type="number" id="dimension_x" name="dimension_x" required>
         </div>
-
         <div>
             <label for="dimension_y">Dimension Y (cm) :</label>
             <input type="number" id="dimension_y" name="dimension_y" required>
         </div>
+    </div>
 
         <div>
             <button type="submit">Poster l'annonce</button>

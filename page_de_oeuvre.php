@@ -10,7 +10,7 @@ if (isset($_GET['Num_oeuvre'])) {
   $num_oeuvre = $_GET['Num_oeuvre'];
 
   // Requête pour récupérer les informations de l'œuvre
-  $sql = "SELECT * FROM oeuvre WHERE Num_oeuvre = ?";
+  $sql = "SELECT * FROM oeuvre JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur WHERE Num_oeuvre = ?";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("i", $num_oeuvre);
   $stmt->execute();
@@ -48,7 +48,7 @@ if (isset($_GET['Num_oeuvre'])) {
       <div class="container">
         <div class="gestion">
           <div class="image-section">
-            <img src="arbre.png" alt="L'Arbre Rouge" />
+            <img src="<?= htmlspecialchars($oeuvre['Imagee']) ?>" alt="<?= htmlspecialchars($oeuvre['titre']) ?>">
           </div>
           <div class="description-section">
             <h2><?php echo htmlspecialchars($oeuvre['titre']); ?></h2>
@@ -56,8 +56,8 @@ if (isset($_GET['Num_oeuvre'])) {
             <?php echo htmlspecialchars($oeuvre['Description']); ?>
             </p>
             <p class="details">
-              Date de l’œuvre : 1942 <br />
-              Auteur : Salvator Dali
+              Date de l’œuvre : <?php echo htmlspecialchars($oeuvre['Date_oeuvre']); ?> <br />
+              Auteur : <?php echo htmlspecialchars($oeuvre['Prenom']); ?> <?php echo htmlspecialchars($oeuvre['Nom']) ; ?>
             </p>
           </div>
         </div>

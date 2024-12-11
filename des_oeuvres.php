@@ -646,6 +646,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
             
                 <div class="card-content" style="display: flex; align-items: flex-start;">
     <img src="<?= htmlspecialchars($oeuvre['Imagee']) ?>" alt="<?= htmlspecialchars($oeuvre['titre']) ?>" style="max-width: 180px; height: auto; margin-right: 10px;">
+
     <div class ="txt">
         <h3><?= htmlspecialchars($oeuvre['titre']) ?></h3>
         <p>Date de l'œuvre : <?= htmlspecialchars($oeuvre['Date_oeuvre']) ?></p>

@@ -34,6 +34,7 @@ include 'connexion.php';
       <?php include 'Navigation/nav.php' ?>
       </nav>
     </header>
+    <div class = " padding " >
     <div class="faq-container">
         <h1>Bienvenue sur notre page FAQ</h1>
         <p>Où nous répondons aux questions fréquentes sur la participation à nos ventes aux enchères d'œuvres d'art en ligne.</p>
@@ -85,6 +86,7 @@ include 'connexion.php';
             <p><strong>Q :</strong> Les œuvres sont-elles garanties ?</p>
             <p><strong>R :</strong> Oui, nous offrons une garantie d'authenticité et une assurance contre les dommages pendant le transport.</p>
         </div>
+    </div>
     </div>
     <script src="script.js"></script>
     <script src="burger-menu.js"></script>

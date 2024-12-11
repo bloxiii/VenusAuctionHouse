@@ -9,7 +9,8 @@ $is_logged_in = isset($_SESSION['Num_client']);
 // Récupération des données du formulaire
 $titre = $_POST['titre'];
 $date = $_POST['date'];
-$auteur = $_POST['auteur'];
+$auteurP = $_POST['prenom'];
+$auteurN = $_POST['nom'];
 $style = $_POST['style'];
 $prix = $_POST['prix'];
 $increment = $_POST['increment'];
@@ -35,7 +36,7 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
     // Vérifier si l'auteur existe déjà
     $checkAuteurSQL = "SELECT Num_auteur FROM auteur WHERE Nom = ?";
     $checkAuteurStmt = $conn->prepare($checkAuteurSQL);
-    $checkAuteurStmt->bind_param('s', $auteur);
+    $checkAuteurStmt->bind_param('s', $auteurN);
     $checkAuteurStmt->execute();
     $checkAuteurStmt->bind_result($id_auteur);
     $checkAuteurStmt->fetch();
@@ -43,9 +44,9 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
 
     if (!$id_auteur) {
         // Insérer un nouvel auteur
-        $insertAuteurSQL = "INSERT INTO auteur (Nom) VALUES (?)";
+        $insertAuteurSQL = "INSERT INTO auteur (Nom, Prenom) VALUES (?,?)";
         $insertAuteurStmt = $conn->prepare($insertAuteurSQL);
-        $insertAuteurStmt->bind_param('s', $auteur);
+        $insertAuteurStmt->bind_param('ss', $auteurN ,$auteurP);
 
         if (!$insertAuteurStmt->execute()) {
             throw new Exception("Erreur lors de l'insertion de l'auteur : " . $conn->error);
@@ -57,14 +58,16 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
 
 
     $insertOeuvreSQL = "INSERT INTO oeuvre (titre, Date_oeuvre, Num_client_aut, Style, Prix_de_depart_euro, Increment, Imagee, Dimension_largeur_cm, Dimension_longueur_cm, Num_client_v)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,? )";
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 $insertOeuvreStmt = $conn->prepare($insertOeuvreSQL);
-$insertOeuvreStmt->bind_param('ssissisiis', $titre, $date, $id_auteur, $style, $prix, $increment, $photoPath, $dimension_x, $dimension_y, $is_logged_in);
+$insertOeuvreStmt->bind_param('siisiisiii', $titre, $date, $id_auteur, $style, $prix, $increment, $photoPath, $dimension_x, $dimension_y, $is_logged_in);
 
 if (!$insertOeuvreStmt->execute()) {
 throw new Exception("Erreur lors de l'insertion de l'œuvre : " . $conn->error);
 }
 
 $conn->commit();
-    echo "Annonce publiée avec succès !";
+    header("Location: Mes_annonces.php");
+    exit;
 ?>
+

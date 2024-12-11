@@ -1,20 +1,22 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
   background: url("photo.png") no-repeat center center fixed;
   background-size: cover;
   color: #333;
+  padding: 0;
 }
 
 header {
   background-color: #20201f;
   height: 120px;
   display: flex;
+  position: fixed;
+  width: 100%;
   align-items: center;
   justify-content: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0;
   border-bottom: 2px solid #bf6a02;
 }
 
@@ -131,6 +133,7 @@ ul {
   background: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;
+  margin-top: 20%;
   max-width: 800px;
   margin: 0 auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -158,4 +161,8 @@ h1 {
   padding: 10px;
   margin: 10px 0;
   border-left: 4px solid #007bff;
+}
+
+.padding {
+  padding-top: 12%;
 }

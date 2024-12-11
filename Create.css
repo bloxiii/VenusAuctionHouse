@@ -5,6 +5,7 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  background: url('FAQ/FAQ/photo.png') no-repeat center center fixed;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -53,7 +54,15 @@ input[type="text"],
 input[type="date"],
 input[type="number"],
 input[type="file"] {
-  background-color: #f9f9f9;
+   padding: 12px;
+    margin-bottom: 0px;
+    border-radius: 30px;
+    border: 6px solid transparent; 
+    background-image: linear-gradient(white, white), linear-gradient(to right, #DBC253, #75682C); 
+    background-origin: border-box;
+    background-clip: padding-box, border-box; 
+    font-size: 16px;
+    background-color: #f9f9f9;
 }
 
 button {
@@ -78,4 +87,8 @@ input:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+form div[style*="display: flex"] > div {
+  flex: 1;
 }
