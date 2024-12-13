@@ -1,3 +1,12 @@
+<?php 
+include 'Connexion.php';
+
+$is_logged_in = isset($_SESSION['Num_client']);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,9 +25,10 @@
         </div>
 
         <div>
-            <label for="date">Date :</label>
-            <input type="number" id="date" name="date" required>
+            <label for="description">Description :</label>
+            <input type="text" id="description" name="description" required>
         </div>
+
 
         <div style="display: flex; gap: 10px;">
         <div>
@@ -31,11 +41,17 @@
         </div>
     </div>
 
-        <div>
-            <label for="style">Style :</label>
-            <input type="text" id="style" name="style" required>
-        </div>
 
+        <div style="display: flex; gap: 10px;">
+        <div>
+        <label for="style">Style :</label>
+        <input type="text" id="style" name="style" required>
+        </div>
+        <div>
+            <label for="date">Date :</label>
+            <input type="number" id="date" name="date" required>
+        </div>
+    </div>
 
         <div style="display: flex; gap: 10px;">
         <div>

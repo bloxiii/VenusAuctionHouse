@@ -645,7 +645,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
             <a href="page_de_oeuvre.php?Num_oeuvre=<?= urlencode($oeuvre['Num_oeuvre']) ?>" class="card-link">
             
                 <div class="card-content" style="display: flex; align-items: flex-start;">
-    <img src="<?= htmlspecialchars($oeuvre['Imagee']) ?>" alt="<?= htmlspecialchars($oeuvre['titre']) ?>" style="max-width: 180px; height: auto; margin-right: 10px;">
+    <img src="<?= htmlspecialchars($oeuvre['Imagee']) ?>" alt="<?= htmlspecialchars($oeuvre['titre']) ?>" style="max-width: 180px; height : 260px; margin-right: 10px;">
 
     <div class ="txt">
         <h3><?= htmlspecialchars($oeuvre['titre']) ?></h3>

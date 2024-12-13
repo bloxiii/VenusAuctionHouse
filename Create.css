@@ -58,7 +58,7 @@ input[type="file"] {
     margin-bottom: 0px;
     border-radius: 30px;
     border: 6px solid transparent; 
-    background-image: linear-gradient(white, white), linear-gradient(to right, #DBC253, #75682C); 
+    background-image: linear-gradient(#e2e0e0, #e2e0e0), linear-gradient(to right, #DBC253, #DBC253); 
     background-origin: border-box;
     background-clip: padding-box, border-box; 
     font-size: 16px;
@@ -85,8 +85,8 @@ button:active {
 button:focus,
 input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #94843c;
+  box-shadow: 0 0 5px #94843c(0, 123, 255, 0.5);
 }
 
 form div[style*="display: flex"] > div {

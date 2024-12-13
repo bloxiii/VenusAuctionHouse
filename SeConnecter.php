@@ -49,7 +49,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
           />
 
           <button type="submit" class="custom-button">Se connecter</button>
-          <a href="#" class="forgot-password">Mot de passe oublié</a>
+          <a href="forgot_password.php" class="forgot-password">Mot de passe oublié</a>
           <a href="Inscription.php" class="forgot-password">Créer un compte</a>
         </form>
       </div>

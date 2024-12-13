@@ -5,7 +5,7 @@ include 'Connexion.php';
 session_start(); // Démarre la session
 
 // Vérifie si l'utilisateur est connecté
-$is_logged_in = isset($_SESSION['Num_client']);
+$is_logged_in = $_SESSION['Num_client'];
 // Récupération des données du formulaire
 $titre = $_POST['titre'];
 $date = $_POST['date'];
@@ -16,6 +16,7 @@ $prix = $_POST['prix'];
 $increment = $_POST['increment'];
 $dimension_x = $_POST['dimension_x'];
 $dimension_y = $_POST['dimension_y'];
+$description = $_POST['description'];
 
 // Gestion de l'upload de la photo
 if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
@@ -57,10 +58,10 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
     }
 
 
-    $insertOeuvreSQL = "INSERT INTO oeuvre (titre, Date_oeuvre, Num_client_aut, Style, Prix_de_depart_euro, Increment, Imagee, Dimension_largeur_cm, Dimension_longueur_cm, Num_client_v)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+    $insertOeuvreSQL = "INSERT INTO oeuvre (titre, Date_oeuvre, Num_client_aut, Style, Prix_de_depart_euro, Increment, Imagee, Dimension_largeur_cm, Dimension_longueur_cm, Num_client_v, Description)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,? )";
 $insertOeuvreStmt = $conn->prepare($insertOeuvreSQL);
-$insertOeuvreStmt->bind_param('siisiisiii', $titre, $date, $id_auteur, $style, $prix, $increment, $photoPath, $dimension_x, $dimension_y, $is_logged_in);
+$insertOeuvreStmt->bind_param('siisiisiiis', $titre, $date, $id_auteur, $style, $prix, $increment, $photoPath, $dimension_x, $dimension_y, $is_logged_in, $description);
 
 if (!$insertOeuvreStmt->execute()) {
 throw new Exception("Erreur lors de l'insertion de l'œuvre : " . $conn->error);

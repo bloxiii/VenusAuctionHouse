@@ -15,7 +15,8 @@
             <a href="Mes_annonces.php">Mes annonces</a>
             <a href="Mes_ventes.php">Mes ventes</a>
           </li>
-          <li><a href="FAQ.php">FAQ</a></li>
+          <li><a href="FAQ.php">FAQ</a>
+          <a href="MentionsLegalesCGU.php">CGU</a></li>
           <li><a href="Logout.php">Se déconnecter</a></li>
           </ul>
           <?php else: ?>
@@ -26,7 +27,8 @@
             <a href="Inscription.php">Inscription</a>
           </li>
         <li><a href="des_oeuvres.php">Oeuvre à vendre</a></li>
-        <li><a href="FAQ.php">FAQ</a></li>
+        <li><a href="FAQ.php">FAQ</a>
+        <a href="MentionsLegalesCGU.php">CGU</a></li>
         </ul>
     <?php endif; ?>
 
