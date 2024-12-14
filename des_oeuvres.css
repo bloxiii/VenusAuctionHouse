@@ -19,6 +19,8 @@ header {
   justify-content: space-between;
   padding: 0 20px;
   border-bottom: 2px solid #bf6a02;
+  position: relative;
+  z-index: 1000 !important;
 }
 
 .header-container {
@@ -26,7 +28,6 @@ header {
   align-items: center;
   width: 100%;
 }
-
 
 form {
   all: unset;
@@ -177,8 +178,6 @@ ul {
   transform: scale(1.05);
 }
 
-
-
 .card-content h3 {
   margin: 0;
   font-size: 1.2em;
@@ -207,21 +206,12 @@ ul {
   width: 100%;
 }
 
-.txt{
-    text-align: justify;
-    height: 200px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    /* align-content: flex-end; */
-    align-items: stretch;
+.txt {
+  text-align: justify;
+  height: 200px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  /* align-content: flex-end; */
+  align-items: stretch;
 }
-
-
-
-
-
-
-
-
-

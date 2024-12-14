@@ -161,6 +161,7 @@ th {
   font-weight: bold;
   float: right;
   margin: 10px;
+  z-index: 1000;
 }
 .create-annonce:hover {
   background-image: linear-gradient(to right, #bdaf3a, #5b4d22);
@@ -172,4 +173,3 @@ td {
   color: #d4af37; /* Texte doré */
   font-weight: bold;
 }
-

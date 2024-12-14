@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && empty($_GET['search']) ) {
 
 
   if ($selectedAuteur && $selectedStyle && !$selectedStiecle && !$selectedPrice) {
-    $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+    $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
             FROM oeuvre
             JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
             WHERE oeuvre.Style = ? AND auteur.Nom = ? ";
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && empty($_GET['search']) ) {
 
   
 if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) {
-  $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+  $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
           FROM oeuvre
           JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
           WHERE auteur.Nom = ? ";
@@ -87,7 +87,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
 
 
   if (!$selectedAuteur && $selectedStyle && !$selectedStiecle && !$selectedPrice) {
-    $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+    $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
             FROM oeuvre
             JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
             WHERE oeuvre.Style = ? ";
@@ -104,7 +104,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
 
 
     if (!$selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) {
-      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+      $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
               FROM oeuvre
               JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur";
     
@@ -129,7 +129,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
           $selectedStiecle1 = 1801;
           $selectedStiecle2 = 1900;
         }
-        $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+        $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
                 FROM oeuvre
                 JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
                 WHERE oeuvre.Style = ? AND auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -156,7 +156,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
         $selectedStiecle1 = 1801;
         $selectedStiecle2 = 1900;
       }
-      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+      $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
               FROM oeuvre
               JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
               WHERE auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -183,7 +183,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
         $selectedStiecle1 = 1801;
         $selectedStiecle2 = 1900;
       }
-      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+      $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
               FROM oeuvre
               JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
               WHERE oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -210,7 +210,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
           $selectedStiecle1 = 1801;
           $selectedStiecle2 = 1900;
         }
-        $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+        $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
                 FROM oeuvre
                 JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
                 WHERE oeuvre.Style = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -242,7 +242,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
       $selectedPrice1 = 100001;
       $selectedPrice2 = 1000000;
     }
-    $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+    $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
             FROM oeuvre
             JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
             WHERE oeuvre.Prix_Loffre BETWEEN ? AND ?  ";
@@ -285,7 +285,7 @@ if ($selectedAuteur && !$selectedStyle && !$selectedStiecle && !$selectedPrice) 
         $selectedStiecle1 = 1801;
         $selectedStiecle2 = 1900;
       }
-      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+      $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
               FROM oeuvre
               JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
               WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND oeuvre.Style = ? AND auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -328,7 +328,7 @@ if (!$selectedAuteur && !$selectedStyle && $selectedStiecle && $selectedPrice) {
     $selectedStiecle1 = 1801;
     $selectedStiecle2 = 1900;
   }
-  $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+  $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
           FROM oeuvre
           JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
           WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -358,7 +358,7 @@ if (!$selectedAuteur && !$selectedStyle && $selectedStiecle && $selectedPrice) {
       $selectedPrice1 = 100001;
       $selectedPrice2 = 1000000;
     }
-    $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+    $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
             FROM oeuvre
             JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
             WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND oeuvre.Style = ? ";
@@ -388,7 +388,7 @@ if (!$selectedAuteur && !$selectedStyle && $selectedStiecle && $selectedPrice) {
         $selectedPrice1 = 100001;
         $selectedPrice2 = 1000000;
       }
-      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+      $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
               FROM oeuvre
               JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
               WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND auteur.Nom = ? ";
@@ -431,7 +431,7 @@ if (!$selectedAuteur && $selectedStyle && $selectedStiecle && $selectedPrice) {
     $selectedStiecle1 = 1801;
     $selectedStiecle2 = 1900;
   }
-  $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+  $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
           FROM oeuvre
           JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
           WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND oeuvre.Style = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -474,7 +474,7 @@ if (!$selectedAuteur && $selectedStyle && $selectedStiecle && $selectedPrice) {
       $selectedStiecle1 = 1801;
       $selectedStiecle2 = 1900;
     }
-    $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+    $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
             FROM oeuvre
             JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
             WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND auteur.Nom = ? AND oeuvre.Date_oeuvre BETWEEN ? AND ? ";
@@ -504,7 +504,7 @@ if (!$selectedAuteur && $selectedStyle && $selectedStiecle && $selectedPrice) {
         $selectedPrice1 = 100001;
         $selectedPrice2 = 1000000;
       }
-      $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+      $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
               FROM oeuvre
               JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
               WHERE oeuvre.Prix_Loffre BETWEEN ? AND ? AND oeuvre.Style = ? AND auteur.Nom = ? ";
@@ -524,7 +524,7 @@ if (!$selectedAuteur && $selectedStyle && $selectedStiecle && $selectedPrice) {
         $searchQuery = trim($_GET['search']);
         $searchmodif = ($searchQuery . '%');
         // Définir la requête SQL avec des paramètres
-        $sql = "SELECT oeuvre.titre, Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
+        $sql = "SELECT oeuvre.titre, Prix_de_depart_euro,  Imagee, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, oeuvre.Prix_Loffre, oeuvre.Date_oeuvre, auteur.Prenom, auteur.Nom, Num_oeuvre
                 FROM oeuvre
                 JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
                 WHERE oeuvre.titre LIKE ?";
@@ -547,8 +547,7 @@ $result = $stmt->get_result();
   if ($result->num_rows > 0) {
     $oeuvres = $result->fetch_all(MYSQLI_ASSOC);
   } else {
-      echo "<p>Pas d'œuvre pour le style : " . htmlspecialchars($selectedStyle) . "</p>" ;
-      exit;
+      $oeuvres = [];
   }
 
   $query = "SELECT DISTINCT Style FROM oeuvre"; 
@@ -650,9 +649,13 @@ $is_logged_in = isset($_SESSION['Num_client']);
     <div class ="txt">
         <h3><?= htmlspecialchars($oeuvre['titre']) ?></h3>
         <p>Date de l'œuvre : <?= htmlspecialchars($oeuvre['Date_oeuvre']) ?></p>
-        <p>Auteur : <?= htmlspecialchars($oeuvre['Prenom']) ?></p>
-        <p>Dernière offre : <?= htmlspecialchars($oeuvre['Prix_Loffre']) ?></p>
-        <p>Montant de l'offre : <?= number_format(htmlspecialchars($oeuvre['Prix_Loffre']), 0, ',', ' ') ?> €</p>
+        <p>Auteur : <?= htmlspecialchars($oeuvre['Prenom']) ?> <?= htmlspecialchars($oeuvre['Nom']) ?></p>
+        <p>Dernière offre : <?= $oeuvre['Prix_Loffre'] != 0 
+        ? number_format(htmlspecialchars($oeuvre['Prix_Loffre']), 0, ',', ' ') . ' €' 
+        : 'N/A' ?></p>
+        <p>Montant de l'offre : <?= $oeuvre['Prix_Loffre'] != 0 
+        ? number_format(htmlspecialchars($oeuvre['Prix_Loffre']), 0, ',', ' ') . ' €' 
+        : number_format(htmlspecialchars($oeuvre['Prix_de_depart_euro']), 0, ',', ' ') . ' €' ?></p>
     </div>
 </div>
 

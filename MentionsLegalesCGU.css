@@ -7,7 +7,8 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 header {
@@ -19,6 +20,7 @@ header {
   justify-content: space-between;
   padding: 0 20px;
   border-bottom: 2px solid #bf6a02;
+  z-index: 1000;
 }
 
 .header-container {
@@ -26,7 +28,6 @@ header {
   align-items: center;
   width: 100%;
 }
-
 
 form {
   all: unset;
@@ -182,7 +183,6 @@ ul {
   object-fit: cover;
 }
 
-
 .card-content h3 {
   margin: 0;
   font-size: 1.2em;
@@ -205,7 +205,7 @@ ul {
   width: 100%;
 }
 
-.txt{
+.txt {
   text-align: justify;
   height: 200px;
   display: flex;
@@ -216,15 +216,16 @@ ul {
 }
 
 .text-box {
-width: auto; /* Auto width for the text box */
-max-width: 800px; /* Set a maximum width */
-margin: 140px auto 15px; /* Add a top margin of 135px (120px for the header + 15px for spacing) */
-padding: 20px; /* Padding inside the text box */
-background-color: #ffffff; /* Set the background color to white */
-border: 2px solid black; /* Black border around the text box */
-border-radius: 15px; /* Rounded corners */
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
-position: relative; /* Keep it in the document flow */
+  width: auto; /* Auto width for the text box */
+  max-width: 800px; /* Set a maximum width */
+  margin: 140px auto 15px; /* Add a top margin of 135px (120px for the header + 15px for spacing) */
+  padding: 20px; /* Padding inside the text box */
+  background-color: #ffffff; /* Set the background color to white */
+  border: 2px solid black; /* Black border around the text box */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+  position: relative; /* Keep it in the document flow */
+  z-index: -1;
 }
 
 .pad {

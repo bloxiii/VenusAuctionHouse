@@ -10,7 +10,7 @@ if (isset($_SESSION['Num_client'])) {
   $num_client = $_SESSION['Num_client'];
 
   // Requête pour récupérer les informations de l'utilisateur
-  $sql = "SELECT oeuvre.titre, auteur.Prenom , auteur.Nom  , oeuvre.Prix_Loffre
+  $sql = "SELECT oeuvre.titre, auteur.Prenom , auteur.Nom  , oeuvre.Prix_Loffre, Prix_de_depart_euro
         FROM oeuvre
         JOIN auteur ON oeuvre.Num_client_aut = auteur.Num_auteur
         WHERE oeuvre.Num_client_v = ?";
@@ -45,14 +45,12 @@ if (isset($_SESSION['Num_client'])) {
   </head>
   <body>
     <header class="header">
-      <div class="header-container">
         <img src="logo.png" alt="Venus Auction House Logo" class="logo" />
         <input
           type="search"
           placeholder="Barre de recherche"
           class="search-bar"
         />
-      </div>
       <nav>
       <?php include 'Navigation/nav.php' ?>
       </nav>
@@ -72,7 +70,9 @@ if (isset($_SESSION['Num_client'])) {
                 <tr>
                     <td><?php echo htmlspecialchars($oeuvre['titre']); ?></td>
                     <td><?php echo htmlspecialchars($oeuvre['Nom']); ?></td>
-                    <td><?php echo htmlspecialchars($oeuvre['Prix_Loffre']); ?>€</td>
+                    <td><?= $oeuvre['Prix_Loffre'] != 0 
+        ? number_format(htmlspecialchars($oeuvre['Prix_Loffre']), 0, ',', ' ') . ' €' 
+        : number_format(htmlspecialchars($oeuvre['Prix_de_depart_euro']), 0, ',', ' ') . ' €' ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>

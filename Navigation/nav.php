@@ -8,7 +8,7 @@
           <li><a href="Mon_compte.php">Mon compte</a></li>
           <li>
             <a href="des_oeuvres.php">Oeuvre à vendre</a>
-            <a href="#">Mes enchères en cours</a>
+            <a href="Mes_ench_cours.php">Mes enchères en cours</a>
             <a href="Mes_achats.php">Mes achats</a>
           </li>
           <li>

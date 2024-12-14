@@ -15,7 +15,8 @@ if (isset($_SESSION['Num_client'])) {
   $sql = "SELECT oeuvre.titre, oeuvre.Prix_Loffre, oeuvre.Date_Loffre, utilisateur.Nom, utilisateur.Prenom
           FROM oeuvre
           JOIN utilisateur ON oeuvre.Num_client_a = utilisateur.Num_client 
-          WHERE oeuvre.Num_client_v = ?";
+          WHERE oeuvre.Num_client_v = ?
+          AND oeuvre.Num_client_a != 0";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("i", $num_client);
   $stmt->execute();
@@ -23,8 +24,7 @@ if (isset($_SESSION['Num_client'])) {
   if ($result->num_rows > 0) {
     $oeuvres = $result->fetch_all(MYSQLI_ASSOC);
   } else {
-      echo "Utilisateur non trouvé.";
-      exit;
+      $oeuvres = [];
   }
 } else {
   echo "Vous n'êtes pas connecté.";
