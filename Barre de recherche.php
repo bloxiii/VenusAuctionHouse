@@ -10,11 +10,16 @@
 <header class="header">
       <div class="header-container">
         <img src="logo.png" alt="Venus Auction House Logo" class="logo" />
-        <input
-          type="search"
-          placeholder="Barre de recherche"
-          class="search-bar"
-        />
+        <form method="GET" action="des_oeuvres.php" class="search-form">
+      <input
+        type="search"
+        id="search"
+        name="search"
+        placeholder="Barre de recherche"
+        class="search-bar"
+      />
+
+    </form>
       </div>
       <nav>
       <?php include 'Navigation/nav.php' ?>

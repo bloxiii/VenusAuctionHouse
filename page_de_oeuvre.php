@@ -53,7 +53,7 @@ if (isset($_GET['Num_oeuvre'])) {
           <h3>Offre</h3>
           <p><strong>Temps restant :</strong> 10 heures</p>
           <p><strong>Dernière offre :</strong> 150.000 €</p>
-          <button class="Surenchérir">Surenchérir pour 157.500 €</button>
+          <button href="popup.html" class="Surenchérir">Surenchérir pour 157.500 €</button>
         </div>
       </div>
     </main>

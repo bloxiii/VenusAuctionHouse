@@ -1,5 +1,6 @@
 <?php 
 include 'Connexion.php';
+session_start(); // Démarre la session
 
 $is_logged_in = isset($_SESSION['Num_client']);
 
@@ -19,7 +20,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
     <?php include('barre de recherche.php') ?>
     <h1>Poster une annonce pour une œuvre</h1>
 
-    <form action="Publication_oeuvre.php" method="POST" enctype="multipart/form-data">
+    <form action="Publication_oeuvre.php" method="POST" enctype="multipart/form-data" class="fform">
         <div>
             <label for="titre">Titre :</label>
             <input type="text" id="titre" name="titre" required>

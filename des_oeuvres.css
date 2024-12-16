@@ -39,19 +39,6 @@ form {
   margin-right: 20px;
 }
 
-.search-bar {
-  padding: 10px; /* Spacing inside the search bar */
-  border-radius: 30px; /* Rounded corners */
-  background-color: #4a4a49; /* Grey background color" */
-  color: #ffffff; /* Solid white background */
-  font-size: 16px; /* Set font size */
-  margin-left: 200%;
-  width: 270%;
-  min-width: 200px; /* Minimum width of the search bar */
-  border: 2px solid #bf6a02; /* Colored edges */
-  outline: none; /* Remove outline */
-}
-
 .search-bar::placeholder {
   color: #ccc; /* Light gray placeholder text */
 }
