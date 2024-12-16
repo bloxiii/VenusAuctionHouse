@@ -6,8 +6,6 @@ body {
   display: flex;
   flex-direction: column;
   background: url('FAQ/FAQ/photo.png') no-repeat center center fixed;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
 }
 

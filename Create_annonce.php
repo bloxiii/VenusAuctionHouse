@@ -16,6 +16,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
     <link rel="stylesheet" href="Create.css"> <!-- Optionnel : Ajouter un fichier CSS pour styliser la page -->
 </head>
 <body>
+    <?php include('barre de recherche.php') ?>
     <h1>Poster une annonce pour une œuvre</h1>
 
     <form action="Publication_oeuvre.php" method="POST" enctype="multipart/form-data">

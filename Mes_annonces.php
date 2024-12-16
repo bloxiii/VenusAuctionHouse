@@ -43,24 +43,14 @@ if (isset($_SESSION['Num_client'])) {
     <link rel="stylesheet" href="Mes_annonces.css" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
-  <body>
-    <header class="header">
-        <img src="logo.png" alt="Venus Auction House Logo" class="logo" />
-        <input
-          type="search"
-          placeholder="Barre de recherche"
-          class="search-bar"
-        />
-      <nav>
-      <?php include 'Navigation/nav.php' ?>
-      </nav>
-    </header>
-  <body>
-    <div class="container">
-      <h1>Mes annonces</h1>
-      <a href="Create_annonce.php" class="create-annonce">Créer une annonce</a>
-      <?php if ($oeuvres): ?>
-        <table>
+  <?php include ('barre de recherche.php'); ?>
+  <main>
+    <div class="historique-container">
+        <h1>Mes enchères en cours</h1>
+        <a href="Create_annonce.php" class="create-annonce">Créer une annonce</a>
+        <php>
+        <?php if ($oeuvres): ?>
+          <table>
             <tr>
                 <th>Titre</th>
                 <th>auteur</th>
@@ -76,10 +66,11 @@ if (isset($_SESSION['Num_client'])) {
                 </tr>
             <?php endforeach; ?>
         </table>
-        <?php else: ?>
+    <?php else: ?>
         <p>Aucune œuvre trouvée pour cet utilisateur.</p>
     <?php endif; ?>
     </div>
+    </main>
     <script src="burger-menu.js"></script>
   </body>
 </html>

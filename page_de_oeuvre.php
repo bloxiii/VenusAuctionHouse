@@ -31,19 +31,7 @@ if (isset($_GET['Num_oeuvre'])) {
     <link rel="stylesheet" href="page_de_oeuvre.css" />
   </head>
   <body>
-    <header>
-      <div class="header-container">
-        <img src="Logo.png" alt="Venus Auction House Logo" class="logo" />
-        <input
-          type="search"
-          placeholder="Barre de recherche"
-          class="search-bar"
-        />
-      </div>
-      <nav>
-      <?php include 'Navigation/nav.php' ?>
-      </nav>
-    </header>
+  <?php include ('barre de recherche.php'); ?>
     <main class="centre">
       <div class="container">
         <div class="gestion">

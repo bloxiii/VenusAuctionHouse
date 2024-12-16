@@ -49,19 +49,7 @@ if (isset($_SESSION['Num_client'])) {
   </head>
   <body>
     <script src="index.js"></script>
-    <header class="header">
-      <div class="header-container">
-        <img src="logo.png" alt="Venus Auction House Logo" class="logo" />
-        <input
-          type="search"
-          placeholder="Barre de recherche"
-          class="search-bar"
-        />
-      </div>
-      <nav>
-      <?php include 'Navigation/nav.php' ?>
-      </nav>
-    </header>
+    <?php include ('barre de recherche.php'); ?>
     <main>
     <div class="historique-container">
         <h1>Historique des achats</h1>

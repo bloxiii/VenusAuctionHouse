@@ -1,5 +1,10 @@
 <?php
 // Connexion à la base de données
+session_start(); // Démarre la session
+
+// Vérifie si l'utilisateur est connecté
+$is_logged_in = isset($_SESSION['Num_client']);
+
 include ('Connexion.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['token'])) {
@@ -44,16 +49,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token'], $_POST['pass
 
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Réinitialisation du mot de passe</title>
-</head>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venus Auction House</title>
+    <link rel="stylesheet" href="connexion.css" />
+  </head>
+  <body>
+  <?php include ('barre de recherche.php'); ?>
 <body>
+<div class="form-container">
     <form method="POST">
         <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
-        <label for="password">Nouveau mot de passe :</label>
-        <input type="password" name="password" required>
-        <button type="submit">Réinitialiser</button>
+        <label for="password">Réinitialisation :</label>
+        <input type="password" name="password" placeholder= "Nouveau mot de passe" required>
+        <button type="submit" class="custom-button">Réinitialiser</button>
     </form>
+</div>
+    <script src="burger-menu.js"></script>
 </body>
 </html>

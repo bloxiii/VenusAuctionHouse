@@ -62,19 +62,7 @@ $conn->close();
     <link rel="stylesheet" href="Inscription.css" />
   </head>
   <body>
-    <header>
-      <div class="header-container">
-        <img src="Logo.png" alt="Venus Auction House Logo" class="logo" />
-        <input
-          type="search"
-          placeholder="Barre de recherche"
-          class="search-bar"
-        />
-      </div>
-      <nav>
-      <?php include 'Navigation/nav.php' ?>
-      </nav>
-    </header>
+  <?php include ('barre de recherche.php'); ?>
     <main>
     <div class="form-container">
     <form action="#" method="post">

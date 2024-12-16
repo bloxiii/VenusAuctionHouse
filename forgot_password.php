@@ -4,6 +4,12 @@
 // Connexion à la base de données
 include ("Connexion.php");
 
+session_start(); // Démarre la session
+
+// Vérifie si l'utilisateur est connecté
+$is_logged_in = isset($_SESSION['Num_client']);
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
 
@@ -38,15 +44,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Mot de passe oublié</title>
-</head>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venus Auction House</title>
+    <link rel="stylesheet" href="connexion.css" />
+  </head>
 <body>
+<?php include ('barre de recherche.php'); ?>
+    <div class="form-container">
     <form method="POST">
-        <label for="email">Adresse e-mail :</label>
-        <input type="email" name="email" required>
-        <button type="submit">Envoyer</button>
+        <label for="email">Mot de passe oublié
+        </label>
+        <input type="email" name="email" placeholder="Entrez votre email" required>
+        <button type="submit" class="custom-button">Envoyer</button>
     </form>
+</div>
 </body>
+<script src="burger-menu.js"></script>
 </html>

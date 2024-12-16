@@ -63,8 +63,7 @@ main {
 
 }
 
-.form-container input {
-    width: 100%; 
+.form-container input { 
     padding: 10px; 
     margin: 20px 0; 
     border: 1px solid #ccc; 

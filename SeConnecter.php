@@ -14,19 +14,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
     <link rel="stylesheet" href="connexion.css" />
   </head>
   <body>
-    <header>
-      <div class="header-container">
-        <img src="Logo.png" alt="Venus Auction House Logo" class="logo" />
-        <input
-          type="search"
-          placeholder="Barre de recherche"
-          class="search-bar"
-        />
-      </div>
-      <nav>
-      <?php include 'Navigation/nav.php' ?>
-      </nav>
-    </header>
+  <?php include ('barre de recherche.php'); ?>
     <main>
       <div class="form-container">
         <form action="test_email.php" method="post">

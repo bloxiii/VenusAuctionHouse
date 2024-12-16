@@ -22,24 +22,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
   </head>
   <body>
   <div class = "FIXE">
-    <header class="header">
-      <div class="header-container">
-        <img src="logo.png" alt="Venus Auction House Logo" class="logo" />
-        <form method="GET" action="">
-        <input
-      type="search"
-      name="search"
-      placeholder="Barre de recherche"
-      class="search-bar"
-      value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>"
-    />
-    </form>
-
-      </div>
-      <nav>
- <?php include 'Navigation/nav.php' ?>
-      </nav>
-    </header>
+    <?php include ('barre de recherche.php'); ?>
 </div>
 <div class="pad" >
     <div class="text-box">
