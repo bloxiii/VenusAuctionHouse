@@ -1,6 +1,5 @@
 <?php
-session_start(); // Démarre la session
-
+include('test_email.php');
 // Vérifie si l'utilisateur est connecté
 $is_logged_in = isset($_SESSION['Num_client']);
 ?>
@@ -17,7 +16,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
   <?php include ('barre de recherche.php'); ?>
     <main>
       <div class="form-container">
-        <form action="test_email.php" method="post">
+        <form action="SeConnecter.php" class="mform" method="post">
           <label for="email"></label>
           <input
             type="email"

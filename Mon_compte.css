@@ -20,6 +20,10 @@ header {
   border-bottom: 2px solid #bf6a02;
 }
 
+label{
+  padding-top: 5px;
+}
+
 .header-container {
   display: flex;
   align-items: center;

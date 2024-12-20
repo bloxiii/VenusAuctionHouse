@@ -5,7 +5,9 @@
         <!-- Menu caché initialement -->
         <?php if ($is_logged_in): ?>
         <ul id="menu" style="display: none">
-          <li><a href="Mon_compte.php">Mon compte</a></li>
+          <li>
+          <a href="APP.php">Accueil</a>
+          <a href="Mon_compte.php">Mon compte</a></li>
           <li>
             <a href="des_oeuvres.php">Oeuvre à vendre</a>
             <a href="Mes_ench_cours.php">Mes enchères en cours</a>
@@ -22,6 +24,9 @@
           <?php else: ?>
         <!-- Menu pour les utilisateurs invités -->
         <ul id="menu" style="display: none">
+        <li>
+          <a href="APP.php">Accueil</a>
+          </li>
           <li>
             <a href="SeConnecter.php">Connexion</a>
             <a href="Inscription.php">Inscription</a>

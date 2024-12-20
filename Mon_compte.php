@@ -53,8 +53,6 @@ if (isset($_SESSION['Num_client'])) {
         <label for="surname">Prénom:</label>
         <?php echo htmlspecialchars($user['Prenom']); ?>
 
-        <label for="birthdate">Date de naissance:</label>
-        <input type="date" id="birthdate" name="birthdate" required />
 
         <label for="address">Addresse:</label>
         <?php echo htmlspecialchars($user['Adresse']); ?>

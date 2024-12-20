@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         mail($email, $subject, $message, $headers);
 
-        echo "Un e-mail de réinitialisation a été envoyé.";
+        include('PopUp/EmailSend.php');
     } else {
         echo "Aucun utilisateur trouvé avec cet e-mail.";
     }
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <?php include ('barre de recherche.php'); ?>
     <div class="form-container">
-    <form method="POST">
+    <form method="POST" class='mform'>
         <label for="email">Mot de passe oublié
         </label>
         <input type="email" name="email" placeholder="Entrez votre email" required>

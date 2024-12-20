@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token'], $_POST['pass
         $stmt->bind_param("ss", $newPassword, $email);
         $stmt->execute();
 
-        echo "Mot de passe réinitialisé avec succès.";
+        include('PopUp/PopReset.php');
     } else {
         echo "Lien invalide ou expiré.";
     }
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token'], $_POST['pass
   <?php include ('barre de recherche.php'); ?>
 <body>
 <div class="form-container">
-    <form method="POST">
+    <form method="POST" class='mform'>
         <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
         <label for="password">Réinitialisation :</label>
         <input type="password" name="password" placeholder= "Nouveau mot de passe" required>

@@ -46,7 +46,7 @@ if (isset($_SESSION['Num_client'])) {
   <?php include ('barre de recherche.php'); ?>
   <main>
     <div class="historique-container">
-        <h1>Mes enchères en cours</h1>
+        <h1>Mes annonces</h1>
         <a href="Create_annonce.php" class="create-annonce">Créer une annonce</a>
         <php>
         <?php if ($oeuvres): ?>

@@ -27,12 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } 
         else {
-            echo "Mot de passe incorrect.";
-            echo $user['Mot_de_passe'];
-            echo $password;
+            include('PopUp/MDPPopUp.php');
         }
     } else {
-        echo "Aucun utilisateur trouvé avec cet email.";
+        include('PopUp/EmailPopUp.php');
     }
 }
 

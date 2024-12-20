@@ -396,7 +396,7 @@ if (!$selectedAuteur && !$selectedStyle && $selectedStiecle && $selectedPrice) {
       // Préparer la requête
       $stmt = $conn->prepare($sql);
     
-      $stmt->bind_param('iis' ,$selectedPrice1, $selectedPrice2, $selectedStyle,$selectedAuteur, $selectedStiecle1, $selectedStiecle2);
+      $stmt->bind_param('iis' ,$selectedPrice1, $selectedPrice2,$selectedAuteur);
     
       $stmt->execute();
       }
