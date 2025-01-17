@@ -20,6 +20,7 @@ if (isset($_GET['Num_oeuvre'])) {
   }
 
 }
+
 ?>
 
 <html lang="fr">
@@ -52,8 +53,16 @@ if (isset($_GET['Num_oeuvre'])) {
         <div class="offer-section">
           <h3>Offre</h3>
           <p><strong>Temps restant :</strong> 10 heures</p>
-          <p><strong>Dernière offre :</strong> 150.000 €</p>
-          <button href="popup.html" class="Surenchérir">Surenchérir pour 157.500 €</button>
+          <p><strong>Dernière offre :</strong> <?php 
+    echo !empty($oeuvre['Prix_Loffre']) 
+        ? $oeuvre['Prix_Loffre'] . " €"
+        : "N/A"; 
+?></p>
+          <a href="popup.php?Num_oeuvre=<?php echo $oeuvre['Num_oeuvre']; ?>" class="Surenchérir">Surenchérir pour <?php 
+    echo !empty($oeuvre['Prix_Loffre']) 
+        ? $oeuvre['Prix_Loffre'] + $oeuvre['Increment'] 
+        : $oeuvre['Prix_de_depart_euro']; 
+    ?> €</a>
         </div>
       </div>
     </main>

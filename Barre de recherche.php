@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venus Auction House</title>
-    <link rel="stylesheet" href="Barre de recherche.css">
+    <link rel="stylesheet" href="Barre de recherche.css?v=1.122">
 </head>
 <body>
 <header class="header">

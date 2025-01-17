@@ -579,13 +579,14 @@ $is_logged_in = isset($_SESSION['Num_client']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Venus Auction House</title>
-    <link rel="stylesheet" href="des_oeuvres.css" />
+    <link rel="stylesheet" href="des_oeuvres.css?v=1.1" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
     <div class = "FIXE">
     <?php include('barre de recherche.php') ?>
     <form action="des_oeuvres.php" method="GET" id="style-form" class = header2>
+      <div class=selecttt>
         <select id="tkt" name="auteur">
             <option value="">Auteur</option>
             <?php foreach ($all_auteurs as $auteurItem): ?>
@@ -614,6 +615,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
               <option value="<?= htmlspecialchars($styleItem['Style']) ?>"><?= htmlspecialchars($styleItem['Style']) ?></option>
           <?php endforeach; ?>
       </select>
+      </div>
 
       <!-- Bouton de soumission -->
     <button type="submit">Appliquer les filtres</button>

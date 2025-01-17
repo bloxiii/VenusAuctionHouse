@@ -10,7 +10,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Venus Auction House</title>
-    <link rel="stylesheet" href="connexion.css" />
+    <link rel="stylesheet" href="connexion.css?v=1.11" />
   </head>
   <body>
   <?php include ('barre de recherche.php'); ?>

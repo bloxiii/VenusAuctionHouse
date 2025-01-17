@@ -17,7 +17,7 @@ $is_logged_in = isset($_SESSION['Num_client']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Venus Auction House</title>
-    <link rel="stylesheet" href="MentionsLegalesCGU.css" />
+    <link rel="stylesheet" href="MentionsLegalesCGU.css?v=1.2" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>

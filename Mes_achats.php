@@ -44,7 +44,7 @@ if (isset($_SESSION['Num_client'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Venus Auction House</title>
-    <link rel="stylesheet" href="Mes_achats.css" />
+    <link rel="stylesheet" href="Mes_achats.css?v=1.1" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>

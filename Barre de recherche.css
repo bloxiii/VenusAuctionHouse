@@ -50,6 +50,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1000;
 }
 
 /* Style du bouton burger */
@@ -70,7 +71,7 @@ nav {
 }
 
 /* Menu caché par défaut */
-ul {
+.ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -85,15 +86,20 @@ ul {
 }
 
 /* Liens du menu */
-ul li {
+.ul li {
   border-bottom: 1px solid #555;
 }
 
-ul li:last-child {
+.ul li:last-child {
   border-bottom: none;
 }
 
-ul li a {
+.FIXE {
+  position: fixed;
+  width: 100%;
+}
+
+.ul li a {
   text-decoration: none;
   color: #20201f;
   display: block;
@@ -101,12 +107,12 @@ ul li a {
   text-align: center;
 }
 
-ul li a:hover {
+.ul li a:hover {
   background-color: #dbc253;
 }
 
 /* Petit effet de transition sur l'affichage du menu */
-ul {
+.ul {
   transition: all 0.3s ease-in-out;
 }
 
@@ -156,4 +162,74 @@ tr:last-child td {
 .search-form {
   margin-left: 7%;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    padding: 10px;
+  }
+
+  .logo {
+    height: 80px;
+    margin-right: 0;
+  }
+
+  .search-bar {
+    margin-left: 0;
+    width: 70%;
+    margin-top: 10px;
+    min-width: unset; /* Annule la largeur minimale */
+  }
+
+  .burger-menu button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .ul {
+    width: 170px;
+    background-color: #fafaf9;
+  }
+
+  .ul li a {
+    color: #20201f;
+  }
+
+  .historique-container {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar {
+    font-size: 14px;
+    padding: 8px;
+    width: 70%;
+    min-width: unset; /* Annule la largeur minimale */
+  }
+
+  .burger-menu button {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
 }

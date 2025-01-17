@@ -59,13 +59,13 @@ $conn->close();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Venus Auction House</title>
-    <link rel="stylesheet" href="Inscription.css" />
+    <link rel="stylesheet" href="Inscription.css?v=1.1" />
   </head>
   <body>
   <?php include ('barre de recherche.php'); ?>
     <main>
     <div class="form-container">
-    <form action="#" method="post">
+    <form class="mform" action="#" method="post">
         <label for="email"></label>
         <input
             type="email"

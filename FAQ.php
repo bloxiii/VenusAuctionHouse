@@ -18,22 +18,12 @@ include 'connexion.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Vente aux enchères</title>
-    <link rel="stylesheet" href="FAQ.css">
+    <link rel="stylesheet" href="FAQ.css?v=1.1">
 </head>
 <body>
-<header>
-      <div class="header-container">
-        <img src="Logo.png" alt="Venus Auction House Logo" class="logo" />
-        <input
-          type="search"
-          placeholder="Barre de recherche"
-          class="search-bar"
-        />
-      </div>
-      <nav>
-      <?php include 'Navigation/nav.php' ?>
-      </nav>
-    </header>
+    <div class=FIXE>
+<?php include('barre de recherche.php') ?>
+</div>
     <div class = " padding " >
     <div class="faq-container">
         <h1>Bienvenue sur notre page FAQ</h1>

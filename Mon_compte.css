@@ -9,48 +9,8 @@ body {
   height: 100vh;
 }
 
-header {
-  background-color: #20201f;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  border-bottom: 2px solid #bf6a02;
-}
-
-label{
+label {
   padding-top: 5px;
-}
-
-.header-container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.logo {
-  height: 100px;
-  width: auto;
-  margin-right: 20px;
-}
-
-.search-bar {
-  padding: 10px; /* Spacing inside the search bar */
-  border-radius: 30px; /* Rounded corners */
-  background-color: #4a4a49; /* Grey background color" */
-  color: #ffffff; /* Solid white background */
-  font-size: 16px; /* Set font size */
-  margin: 30%; /* Center the search bar */
-  width: 25%; /* Width of the search bar */
-  min-width: 200px; /* Minimum width of the search bar */
-  border: 2px solid #bf6a02; /* Colored edges */
-  outline: none; /* Remove outline */
-}
-
-.search-bar::placeholder {
-  color: #ccc; /* Light gray placeholder text */
 }
 
 .user-info-box {
@@ -89,7 +49,6 @@ label{
   border: 1px solid #ccc; /* Light gray border */
   outline: none; /* Remove outline */
 }
-
 
 nav {
   position: relative;
