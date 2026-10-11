@@ -1,0 +1,5 @@
+ledger.db
+*.db-journal
+__pycache__/
+.pytest_cache/
+.venv/

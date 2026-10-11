@@ -1,0 +1,80 @@
+# =============================================================================
+#  CLAUDE BOT / SURVIVAL MODE — configuration
+#  PAPER TRADING UNIQUEMENT : aucun argent réel, aucune connexion à un compte.
+# =============================================================================
+
+game:
+  initial_balance_usd: 50.00     # solde virtuel de départ
+  cycle_interval_seconds: 600    # 10 minutes entre deux cycles (mode normal)
+  fast_interval_seconds: 3       # intervalle utilisé avec --fast
+  max_cycles: 288                # 288 x 10 min = 48 h
+  assets: [BTC, ETH, SOL]        # actifs autorisés (paires XXXUSDT)
+  quote: USDT
+
+fees:
+  trade_fee_rate: 0.001          # 0,1 % du montant de chaque transaction
+
+survival:
+  # Loyer fictif mensuel (USD). Il est converti au prorata de la durée NOMINALE
+  # d'un cycle (cycle_interval_seconds), même en mode --fast, pour que
+  # l'économie du jeu reste identique. 0 = pas de loyer.
+  rent_per_month_usd: 0.0
+  # Le kill switch se déclenche si valeur totale (cash + positions) <= ce seuil.
+  kill_threshold_usd: 0.0
+
+risk:
+  # Ces limites sont appliquées par le CODE, quelle que soit la demande du modèle.
+  max_trade_fraction: 0.50       # une transaction <= 50 % de la valeur du portefeuille
+  min_trade_usd: 1.00            # en dessous, l'ordre est ignoré (HOLD)
+  # Si le modèle demande plus que permis : "clamp" = réduire au maximum autorisé,
+  # "reject" = refuser l'ordre (HOLD forcé).
+  on_violation: clamp
+
+model:
+  name: claude-haiku-5-5         # modèle par défaut (le moins cher)
+  max_tokens: 2048               # plafond de la réponse (réflexion incluse)
+  # Effort de réflexion : low | medium | high. "low" = moins de tokens = moins cher.
+  effort: low
+  # Demande à l'API une sortie JSON contrainte par schéma. La réponse est
+  # de toute façon revalidée par le code.
+  structured_output: true
+  timeout_seconds: 60
+  # Tarifs en USD par million de tokens (à mettre à jour si les prix changent,
+  # voir https://www.anthropic.com/pricing). Claude Haiku 5.5, prompts <= 100K tokens.
+  pricing:
+    input_per_mtok: 0.10
+    output_per_mtok: 0.50
+    cache_write_per_mtok: 0.125
+    cache_read_per_mtok: 0.01
+
+market:
+  # Ordre d'essai des sources : binance (plusieurs URLs publiques), puis coingecko.
+  sources: [binance, coingecko]
+  binance_base_urls:
+    - https://api.binance.com
+    - https://data-api.binance.vision
+  coingecko_base_url: https://api.coingecko.com/api/v3
+  coingecko_ids: {BTC: bitcoin, ETH: ethereum, SOL: solana}
+  kline_interval: 1h
+  kline_limit: 24                # 24 bougies de 1 h = 24 h d'historique
+  request_timeout_seconds: 10
+  max_retries: 3                 # tentatives par source en cas d'erreur réseau / 429 / 5xx
+  backoff_seconds: 2             # délai initial (doublé à chaque tentative)
+
+memory:
+  recent_decisions: 10           # nombre de décisions passées envoyées au modèle
+
+dry_run:
+  strategy: random               # random | hold
+  # En --dry-run il n'y a pas d'appel API. Si true, on déduit quand même un coût
+  # ESTIMÉ (≈ 4 caractères / token) pour tester la mécanique de survie.
+  simulate_api_cost: true
+  seed: null                     # entier pour rendre la stratégie aléatoire reproductible
+
+storage:
+  db_path: ledger.db
+
+dashboard:
+  host: 127.0.0.1
+  port: 8000
+  refresh_seconds: 5
