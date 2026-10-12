@@ -97,6 +97,8 @@ class Agent:
             return self._finish(state, cycle, trades, prices, unpaid)
 
         prices = snap.prices
+        if snap.ts:                      # en backtest : heure simulée du marché
+            cycle["ts"] = snap.ts
         state["last_prices"] = prices
         cycle["prices"] = prices
 
@@ -105,6 +107,7 @@ class Agent:
             cycle_number=n, max_cycles=state["max_cycles"],
             portfolio_view=portfolio_view(state, prices),
             market_summary=snap.summary(),
+            candle_interval=self.cfg["market"].get("kline_interval", "1h"),
             recent=format_recent_decisions(self.ledger.recent_cycles(self.cfg["memory"]["recent_decisions"])),
             costs={"api_cost_total_usd": round(state["total_api_cost"], 6),
                    "rent_per_cycle_usd": round(self.rent, 6),

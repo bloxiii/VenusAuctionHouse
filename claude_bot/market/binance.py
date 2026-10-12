@@ -38,6 +38,7 @@ class MarketSnapshot:
     prices: dict[str, float]
     history: dict[str, list[Candle]] = field(default_factory=dict)
     source: str = ""
+    ts: str | None = None   # horodatage du marché (backtest) ; None = maintenant
 
     def summary(self) -> dict[str, Any]:
         """Vue compacte (variations 1 h / 24 h, plus haut / bas) pour le prompt."""
@@ -47,13 +48,13 @@ class MarketSnapshot:
             item: dict[str, Any] = {"price": round(price, 6)}
             if candles:
                 first, last = candles[0].open, candles[-1].close
-                item["change_24h_pct"] = round((last / first - 1) * 100, 3) if first else None
+                item["change_window_pct"] = round((last / first - 1) * 100, 3) if first else None
                 if len(candles) >= 2:
                     prev = candles[-2].close
-                    item["change_1h_pct"] = round((last / prev - 1) * 100, 3) if prev else None
-                item["high_24h"] = round(max(c.high for c in candles), 6)
-                item["low_24h"] = round(min(c.low for c in candles), 6)
-                item["closes_1h"] = [round(c.close, 6) for c in candles]
+                    item["change_last_candle_pct"] = round((last / prev - 1) * 100, 3) if prev else None
+                item["high_window"] = round(max(c.high for c in candles), 6)
+                item["low_window"] = round(min(c.low for c in candles), 6)
+                item["closes"] = [round(c.close, 6) for c in candles]
             out[asset] = item
         return out
 

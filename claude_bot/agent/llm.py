@@ -43,13 +43,15 @@ def compute_cost(pricing: dict[str, float], input_tokens: int, output_tokens: in
 class ClaudeDecider:
     """Demande une décision de trading à Claude."""
 
-    def __init__(self, cfg: dict[str, Any]):
+    def __init__(self, cfg: dict[str, Any], schema_assets: list[str] | None = None):
         import anthropic  # import local : --dry-run fonctionne sans clé API
 
         if not os.environ.get("ANTHROPIC_API_KEY"):
             raise LLMError("Variable d'environnement ANTHROPIC_API_KEY absente (ou utilisez --dry-run).")
         self._anthropic = anthropic
         self.cfg = cfg
+        # Noms d'actifs autorisés dans le schéma (différents en mode anonymisé).
+        self.schema_assets = schema_assets or cfg["game"]["assets"]
         m = cfg["model"]
         # La clé est lue automatiquement depuis ANTHROPIC_API_KEY par le SDK.
         self.client = anthropic.Anthropic(timeout=float(m.get("timeout_seconds", 60)), max_retries=2)
@@ -59,7 +61,7 @@ class ClaudeDecider:
         output_config: dict[str, Any] = {"effort": m.get("effort", "low")}
         if m.get("structured_output", True):
             output_config["format"] = {"type": "json_schema",
-                                       "schema": decision_schema(self.cfg["game"]["assets"])}
+                                       "schema": decision_schema(self.schema_assets)}
         a = self._anthropic
         try:
             resp = self.client.messages.create(

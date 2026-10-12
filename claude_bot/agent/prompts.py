@@ -73,9 +73,10 @@ def format_recent_decisions(cycles: list[dict[str, Any]]) -> list[dict[str, Any]
 
 def build_user_message(*, cycle_number: int, max_cycles: int, portfolio_view: dict[str, Any],
                        market_summary: dict[str, Any], recent: list[dict[str, Any]],
-                       costs: dict[str, Any]) -> str:
+                       costs: dict[str, Any], candle_interval: str = "1h") -> str:
     payload = {
         "cycle": cycle_number,
+        "candle_interval": candle_interval,   # durée de chaque bougie de "closes"
         "cycles_remaining_after_this_one": max_cycles - cycle_number,
         "portfolio": portfolio_view,
         "survival_costs": costs,

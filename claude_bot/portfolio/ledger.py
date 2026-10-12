@@ -162,6 +162,10 @@ class Ledger:
         rows = self.conn.execute("SELECT cycle_number, ts, portfolio_value FROM cycles ORDER BY id").fetchall()
         return [dict(r) for r in rows]
 
+    def value_history_with_prices(self) -> list[dict[str, Any]]:
+        rows = self.conn.execute("SELECT cycle_number, prices_json FROM cycles ORDER BY id").fetchall()
+        return [dict(r) for r in rows]
+
     def recent_transactions(self, limit: int) -> list[dict[str, Any]]:
         rows = self.conn.execute("SELECT * FROM transactions ORDER BY id DESC LIMIT ?", (limit,)).fetchall()
         return [dict(r) for r in rows]

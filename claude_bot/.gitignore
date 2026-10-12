@@ -3,3 +3,6 @@ ledger.db
 __pycache__/
 .pytest_cache/
 .venv/
+backtest_*.db
+backtest_*.json
+data/

@@ -17,14 +17,19 @@ claude_bot/
 ├── config.yaml          # toutes les règles du jeu (commentées)
 ├── run_agent.py         # lance l'agent (boucle)
 ├── run_dashboard.py     # lance le tableau de bord (http://localhost:8000)
+├── backtest.py          # rejoue une stratégie sur 1 an d’historique
 ├── agent/
 │   ├── config.py        # chargement + validation de config.yaml, loyer au prorata
 │   ├── prompts.py       # prompt système + message de chaque cycle
 │   ├── llm.py           # appel Claude (SDK anthropic) + calcul du coût réel
 │   ├── validation.py    # validation stricte du JSON de décision
 │   ├── dummy.py         # stratégie factice pour --dry-run
+│   ├── strategies.py    # règle de tendance (référence) + anonymisation
+│   ├── metrics.py       # buy & hold, perte max, Sharpe, critères de validation
 │   └── loop.py          # déroulé d'un cycle, kill switch, boucle principale
-├── market/binance.py    # prix + bougies 1 h (Binance, secours CoinGecko), retries
+├── market/
+│   ├── binance.py       # prix + bougies 1 h (Binance, secours CoinGecko), retries
+│   └── historical.py    # historique : téléchargement, cache, rejeu sans lecture du futur
 ├── portfolio/
 │   ├── portfolio.py     # cash, positions, frais, limites de risque, coûts de survie
 │   └── ledger.py        # SQLite (ledger.db) : cycles, transactions, état de l'agent
@@ -131,6 +136,67 @@ Tests unitaires (frais, limites de risque, validation JSON, kill switch, reprise
 ```bash
 python -m pytest -v
 ```
+
+---
+
+## Objectif : prouver la rentabilité avant tout argent réel
+
+Le but à terme est un bot **rentable sur 1 an**, à qui l'on confierait de l'argent réel
+seulement *après* l'avoir prouvé. « Rentable » ne suffit pas : il faut **battre le
+buy & hold** (acheter BTC/ETH/SOL à parts égales au départ et ne plus rien toucher), frais
+et coûts API compris. Une année où le BTC fait +60 %, un bot à +20 % a fait perdre de l'argent.
+
+Le dashboard affiche donc en permanence la courbe du buy & hold (pointillés) et l'écart
+« vs Buy & Hold ».
+
+### Étape 1 — Backtest sur 1 an d'historique
+
+```bash
+python backtest.py --strategy hold          # ne rien faire (référence)
+python backtest.py --strategy random        # hasard (référence)
+python backtest.py --strategy trend         # règle simple de suivi de tendance (référence)
+python backtest.py --strategy claude --yes  # Claude : ≈ 2 190 appels en 4h ≈ 1 $ de crédits
+python run_dashboard.py --db backtest_claude.db
+```
+
+Options : `--days 365`, `--interval 4h` (aussi 1h, 1d…), `--synthetic` (données fictives
+hors ligne, pour tester le programme). L'historique Binance est téléchargé une fois puis
+mis en cache dans `data/`. À chaque cycle l'agent ne voit que les bougies déjà closes.
+
+**Anti-triche :** Claude a pu voir ces prix pendant son entraînement. Par défaut, le
+backtest Claude **anonymise** les actifs (`ACTIF_A`, `ACTIF_B`…) et exprime les prix en
+indice base 100, pour qu'il ne puisse pas reconnaître la période (`--no-anonymize` pour
+désactiver).
+
+Le rapport affiche rendement, perte maximale depuis un sommet, ratio de Sharpe
+(rendement / risque), nombre de trades, frais, régularité sur 4 sous-périodes, et coche
+5 critères :
+
+1. bat le buy & hold sur la période ;
+2. meilleur ratio rendement / risque (Sharpe) que le buy & hold ;
+3. perte maximale ≤ 25 % ;
+4. bat le buy & hold sur au moins 3 trimestres sur 4 (pas juste un coup de chance) ;
+5. au moins 30 transactions.
+
+**Si Claude ne bat pas la règle `trend` de quelques lignes, l'IA n'apporte rien.**
+
+### Étape 2 — Améliorer, sans tricher
+
+Ajuster le prompt, l'intervalle, les indicateurs… puis re-tester. Piège : à force de
+réessayer sur la même année, on finit par « apprendre » cette année-là par cœur
+(sur-optimisation). Gardez une période jamais utilisée pour le test final.
+
+### Étape 3 — Paper trading en direct, plusieurs mois
+
+C'est **la vraie preuve** : des prix que personne (ni vous, ni Claude) ne connaissait
+à l'avance. Lancez `run_agent.py` avec la stratégie figée, sans la modifier pendant
+3 à 6 mois, et vérifiez les mêmes critères.
+
+### Étape 4 — Argent réel (seulement si tout ce qui précède est validé)
+
+Pas implémenté, volontairement. Le jour venu : petite somme que vous acceptez de perdre,
+clé d'exchange **sans droit de retrait**, limites de perte codées en dur, et pensez à
+la fiscalité des plus-values crypto.
 
 ---
 
